@@ -123,9 +123,9 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.process-card, .practice-card, .team-card, .practice-list-item').forEach(el => {
+    document.querySelectorAll('.process-card, .practice-card, .team-card, .practice-list-item, .team-quote-card').forEach((el, i) => {
       el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = `opacity 0.55s ease ${i * 0.08}s, transform 0.55s cubic-bezier(0.4,0,0.2,1) ${i * 0.08}s`;
       observer.observe(el);
     });
