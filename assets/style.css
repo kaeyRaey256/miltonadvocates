@@ -118,8 +118,25 @@
       background: linear-gradient(135deg, var(--dark-blue) 0%, var(--navy-mid) 60%, #1a3a8f 100%);
       padding: 18px 0;
       box-shadow: 0 2px 20px rgba(0,0,128,0.4);
+      overflow: hidden;
+    }
+    /* Diagonal stripe pattern overlay on navbar */
+    .navbar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        60deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,0.03) 18px,
+        rgba(255,255,255,0.03) 20px
+      );
+      pointer-events: none;
     }
     .navbar .container {
+      position: relative;
+      z-index: 1;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1075,7 +1092,134 @@
       background: var(--white);
     }
 
-    /* ===== ANIMATIONS ===== */
+    /* ===== TEAM QUOTE CARD ===== */
+    .team-quote-card {
+      background: linear-gradient(135deg, var(--dark-blue) 0%, var(--navy-mid) 100%);
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+    }
+    .team-quote-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        60deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,0.02) 18px,
+        rgba(255,255,255,0.02) 20px
+      );
+    }
+    .team-quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 120px;
+      color: var(--cyan);
+      line-height: 0.7;
+      margin-bottom: 24px;
+      opacity: 0.7;
+      position: relative;
+    }
+    .team-quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 2vw, 24px);
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.5;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .team-quote-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--cyan);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .team-quote-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .team-quote-name {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+    }
+    .team-quote-role {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .team-quote-btn {
+      position: relative;
+      align-self: flex-start;
+      background: transparent;
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+    .team-quote-btn:hover {
+      background: var(--cyan);
+      color: var(--dark-blue);
+    }
+
+    /* ===== ENHANCED MICRO-ANIMATIONS ===== */
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,231,255,0); }
+      50% { box-shadow: 0 0 20px 4px rgba(0,231,255,0.15); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    .process-card-icon {
+      animation: float 4s ease-in-out infinite;
+    }
+    .process-card:nth-child(2) .process-card-icon { animation-delay: 0.6s; }
+    .process-card:nth-child(3) .process-card-icon { animation-delay: 1.2s; }
+    /* Smooth underline reveal on nav links */
+    .nav-links a::after {
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    /* Practice card shimmer on hover */
+    .practice-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    /* Button hover lift */
+    .btn {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0px); }
+    /* Team card smooth scale */
+    .team-card-image img {
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    /* Section eyebrow line grow animation */
+    .section-eyebrow-line {
+      transform-origin: left;
+      animation: growLine 0.8s ease forwards;
+    }
+    @keyframes growLine {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -1124,6 +1268,10 @@
       .modal-content { padding: 32px 24px; }
       .modal-contact-btn { display: inline-flex; }
       .modal-header { flex-wrap: wrap; }
+
+      .team-quote-card { min-height: 200px; padding: 32px 28px; }
+      .team-quote-mark { font-size: 80px; }
+      .team-quote-text { font-size: 18px; }
 
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
