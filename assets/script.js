@@ -75,10 +75,10 @@
 })();
 
 /* === STICKY NAVBAR SCROLL STYLE === */
-const navbar = document.getElementById('navbar');
-if (navbar) window.addEventListener('scroll', () => {
-  if (!navbar.classList.contains('hide')) {
-    navbar.style.boxShadow = window.scrollY > 60
+const navbarScroll = document.getElementById('navbar');
+if (navbarScroll) window.addEventListener('scroll', () => {
+  if (!navbarScroll.classList.contains('hide')) {
+    navbarScroll.style.boxShadow = window.scrollY > 60
       ? '0 4px 32px rgba(0,0,128,0.55)'
       : '0 2px 20px rgba(0,0,128,0.4)';
   }
@@ -151,7 +151,7 @@ function openAttorneyModal() { openModal('attorney'); }
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.active').forEach(m => {
+    document.querySelectorAll('.modal-overlay.is-open').forEach(m => {
       const id = m.id.replace('modal-', '');
       closeModal(id);
     });
