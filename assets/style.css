@@ -324,26 +324,17 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .practice-section { padding: 100px 0; background: var(--navy); position: relative; overflow: hidden; isolation: isolate; }
 .practice-section::before {
   content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background-image:
-    repeating-linear-gradient(
-      45deg, transparent, transparent 28px,
-      rgba(0,231,255,0.04) 28px, rgba(0,231,255,0.04) 29px
-    ),
-    repeating-linear-gradient(
-      -45deg, transparent, transparent 48px,
-      rgba(0,128,255,0.025) 48px, rgba(0,128,255,0.025) 49px
-    );
-  background-size: 60px 60px, 100px 100px;
-  animation: practicePatternDrift 18s linear infinite;
+  background-image: repeating-linear-gradient(
+    60deg, transparent, transparent 18px,
+    rgba(255,255,255,0.025) 18px, rgba(255,255,255,0.025) 20px
+  );
 }
 @keyframes practicePatternDrift {
-  0%   { background-position: 0 0, 0 0; }
-  100% { background-position: 60px 60px, 100px 100px; }
+  0%   { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
 }
 .practice-section > * { position: relative; z-index: 1; }
 .practice-bg { display: none; }
-
-.practice-section > * { position: relative; z-index: 2; }
 .practice-section .section-eyebrow span { color: var(--cyan); }
 .practice-section .section-eyebrow-line { background: var(--cyan); }
 .practice-section h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--offwhite); margin-bottom: 52px; position: relative; }
@@ -455,11 +446,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
   padding: 12px 28px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  transition: background var(--t-base) var(--ease), color var(--t-base) var(--ease);
-}
-.team-quote-btn:hover {
-  background: var(--cyan);
-  color: var(--navy);
+  transition: background var(--t) var(--ease), color var(--t) var(--ease);
 }
 .team-quote-btn:hover { background: var(--cyan); color: var(--navy); }
 
