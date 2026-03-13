@@ -7,11 +7,18 @@
   const navbar = document.getElementById('navbar');
   const footer = document.getElementById('site-footer');
   if (!navbar || !footer) return;
-  const io = new IntersectionObserver(
-    ([entry]) => { navbar.classList.toggle('hide', entry.isIntersecting); },
-    { threshold: 0.05 }
-  );
-  io.observe(footer);
+  function checkFooter() {
+    const footerTop = footer.getBoundingClientRect().top;
+    const winH = window.innerHeight;
+    // Hide navbar the moment footer enters the viewport
+    if (footerTop < winH) {
+      navbar.classList.add('hide');
+    } else {
+      navbar.classList.remove('hide');
+    }
+  }
+  window.addEventListener('scroll', checkFooter, { passive: true });
+  checkFooter();
 })();
 
 /* === MOBILE NAV — premium slide drawer === */
@@ -128,9 +135,17 @@ function toggleBio() {
 function toggleTeamExpand() {
   const panel = document.getElementById('teamExpandPanel');
   const arrow = document.getElementById('teamExpandArrow');
+  const bar = document.getElementById('teamExpandBar');
   if (!panel) return;
   const isOpen = panel.classList.toggle('open');
   arrow.classList.toggle('open', isOpen);
+  if (bar) bar.setAttribute('aria-expanded', isOpen);
+  // trigger scroll-reveal for newly visible cards
+  if (isOpen) {
+    panel.querySelectorAll('.scroll-reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 80);
+    });
+  }
 }
 
 /* === CONTACT FORM === */
