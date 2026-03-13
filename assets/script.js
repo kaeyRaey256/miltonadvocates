@@ -49,9 +49,11 @@
 /* === STICKY NAVBAR SCROLL STYLE === */
 const navbar = document.getElementById('navbar');
 if (navbar) window.addEventListener('scroll', () => {
-  navbar.style.boxShadow = window.scrollY > 60
-    ? '0 4px 32px rgba(0,0,128,0.55)'
-    : '0 2px 20px rgba(0,0,128,0.4)';
+  if (!navbar.classList.contains('hide')) {
+    navbar.style.boxShadow = window.scrollY > 60
+      ? '0 4px 32px rgba(0,0,128,0.55)'
+      : '0 2px 20px rgba(0,0,128,0.4)';
+  }
 }, { passive: true });
 
 /* === SCROLL REVEAL === */
@@ -85,15 +87,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 function openModal(key) {
   const el = document.getElementById('modal-' + key);
   if (!el) return;
-  el.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  requestAnimationFrame(() => el.classList.add('active'));
+  el.classList.add('active');
 }
 function closeModal(key) {
   const el = document.getElementById('modal-' + key);
   if (!el) return;
   el.classList.remove('active');
-  setTimeout(() => { el.style.display = 'none'; document.body.style.overflow = ''; }, 300);
+  setTimeout(() => { document.body.style.overflow = ''; }, 360);
 }
 function closeModalOnOverlay(e, key) {
   if (e.target === e.currentTarget) closeModal(key);
