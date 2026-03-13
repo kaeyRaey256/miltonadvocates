@@ -22,36 +22,57 @@
 })();
 
 /* === MOBILE NAV — premium slide drawer === */
-document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobileNav');
-  const backdrop  = document.getElementById('mobileNavBackdrop');
-  const closeBtn  = document.getElementById('mobileNavClose');
-  if (!hamburger || !mobileNav) return;
+(function initMobileNav() {
+  function setup() {
+    var hamburger = document.getElementById('hamburger');
+    var mobileNav = document.getElementById('mobileNav');
+    var backdrop  = document.getElementById('mobileNavBackdrop');
+    var closeBtn  = document.getElementById('mobileNavClose');
 
-  function openNav() {
-    mobileNav.classList.add('open');
-    backdrop && backdrop.classList.add('open');
-    hamburger.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeNav() {
-    mobileNav.classList.remove('open');
-    backdrop && backdrop.classList.remove('open');
-    hamburger.classList.remove('open');
-    document.body.style.overflow = '';
+    if (!hamburger || !mobileNav) {
+      // retry once if DOM not yet ready
+      setTimeout(setup, 100);
+      return;
+    }
+
+    function openNav() {
+      mobileNav.classList.add('open');
+      if (backdrop) backdrop.classList.add('open');
+      hamburger.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNav() {
+      mobileNav.classList.remove('open');
+      if (backdrop) backdrop.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Use both click and touchend for maximum mobile compatibility
+    function addTap(el, fn) {
+      if (!el) return;
+      el.addEventListener('click', fn);
+      el.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        fn();
+      }, { passive: false });
+    }
+
+    addTap(hamburger, openNav);
+    addTap(closeBtn,  closeNav);
+    addTap(backdrop,  closeNav);
+
+    document.querySelectorAll('.mobile-nav-link').forEach(function(l) {
+      l.addEventListener('click', closeNav);
+    });
   }
 
-  hamburger.addEventListener('click', openNav);
-  closeBtn && closeBtn.addEventListener('click', closeNav);
-  backdrop && backdrop.addEventListener('click', closeNav);
-  document.querySelectorAll('.mobile-nav-link').forEach(l =>
-    l.addEventListener('click', closeNav)
-  );
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeNav();
-  });
-});
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setup);
+  } else {
+    setup();
+  }
+})();
 
 /* === STICKY NAVBAR SCROLL STYLE === */
 const navbar = document.getElementById('navbar');
@@ -94,21 +115,37 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 function openModal(key) {
   const el = document.getElementById('modal-' + key);
   if (!el) return;
+  // close any open modal first
+  document.querySelectorAll('.modal-overlay.is-open').forEach(m => {
+    m.classList.remove('is-open');
+    m.style.display = 'none';
+  });
   document.body.style.overflow = 'hidden';
-  el.classList.add('active');
+  el.style.display = 'flex';
+  // force reflow so opacity transition fires
+  void el.offsetWidth;
+  el.classList.add('is-open');
 }
 function closeModal(key) {
   const el = document.getElementById('modal-' + key);
   if (!el) return;
-  el.classList.remove('active');
-  setTimeout(() => { document.body.style.overflow = ''; }, 360);
+  el.classList.remove('is-open');
+  setTimeout(() => {
+    el.style.display = 'none';
+    document.body.style.overflow = '';
+  }, 320);
 }
 function closeModalOnOverlay(e, key) {
   if (e.target === e.currentTarget) closeModal(key);
 }
 function switchModal(from, to) {
-  closeModal(from);
-  setTimeout(() => openModal(to), 320);
+  const fromEl = document.getElementById('modal-' + from);
+  if (fromEl) { fromEl.classList.remove('is-open'); fromEl.style.display = 'none'; }
+  const toEl = document.getElementById('modal-' + to);
+  if (!toEl) return;
+  toEl.style.display = 'flex';
+  void toEl.offsetWidth;
+  toEl.classList.add('is-open');
 }
 function openAttorneyModal() { openModal('attorney'); }
 
@@ -135,18 +172,65 @@ function toggleBio() {
 function toggleTeamExpand() {
   const panel = document.getElementById('teamExpandPanel');
   const arrow = document.getElementById('teamExpandArrow');
-  const bar = document.getElementById('teamExpandBar');
+  const bar   = document.getElementById('teamExpandBar');
   if (!panel) return;
   const isOpen = panel.classList.toggle('open');
-  arrow.classList.toggle('open', isOpen);
-  if (bar) bar.setAttribute('aria-expanded', isOpen);
-  // trigger scroll-reveal for newly visible cards
+  if (arrow) arrow.classList.toggle('open', isOpen);
+  if (bar)   bar.setAttribute('aria-expanded', String(isOpen));
   if (isOpen) {
-    panel.querySelectorAll('.scroll-reveal').forEach((el, i) => {
-      setTimeout(() => el.classList.add('visible'), i * 80);
+    // stagger-reveal the position cards
+    panel.querySelectorAll('.position-card, .scroll-reveal').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = `opacity 0.4s ease ${i*0.08}s, transform 0.4s ease ${i*0.08}s`;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      });
     });
   }
 }
+
+
+/* === ATTORNEY CARD AUTO-REVEAL on tablet/phone === */
+(function() {
+  function tryAutoReveal() {
+    // Only on touch/small screens
+    if (window.innerWidth > 900) return;
+    var card = document.querySelector('.team-card');
+    if (!card) return;
+    var img = card.querySelector('img');
+    function reveal() {
+      setTimeout(function() {
+        card.classList.add('auto-reveal');
+      }, 700); // 0.7s after image ready
+    }
+    if (img && img.complete) {
+      reveal();
+    } else if (img) {
+      img.addEventListener('load', reveal);
+      // fallback if load already fired
+      setTimeout(reveal, 1000);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tryAutoReveal);
+  } else {
+    tryAutoReveal();
+  }
+  // Re-check on resize
+  window.addEventListener('resize', function() {
+    var card = document.querySelector('.team-card');
+    if (!card) return;
+    if (window.innerWidth > 900) {
+      card.classList.remove('auto-reveal');
+    } else {
+      card.classList.add('auto-reveal');
+    }
+  }, { passive: true });
+})();
 
 /* === CONTACT FORM === */
 function handleFormSubmit(e) {
