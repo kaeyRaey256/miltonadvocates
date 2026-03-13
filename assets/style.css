@@ -493,17 +493,12 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
   color: var(--cyan);
   background: transparent;
   border-radius: 8px;
-  padding: 12px 28px;
+  padding: 10px 20px;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  transition: background var(--t-base) var(--ease), color var(--t-base) var(--ease);
-}
-.team-quote-btn:hover {
-  background: var(--cyan);
-  color: var(--navy);
+  letter-spacing: 0.02em;
+  transition: background var(--t) var(--ease), color var(--t) var(--ease);
 }
 .team-quote-btn:hover { background: var(--cyan); color: var(--navy); }
-
 /* === SOCIAL FEED === */
 .social-section { padding: 100px 0; background: linear-gradient(180deg, var(--offwhite) 0%, #ededf5 100%); }
 .social-section .section-eyebrow-line { background: rgba(0,0,128,0.3); }
@@ -536,7 +531,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 /* === FOOTER === */
 footer {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
-  padding: 80px 0 0; position: relative; overflow: hidden;
+  padding: 80px 0 0; position: relative; overflow: hidden; isolation: isolate;
 }
 /* Footer animated crosshatch pattern */
 footer::before {
