@@ -143,12 +143,21 @@ function closeModalOnOverlay(e, key) {
 }
 function switchModal(from, to) {
   const fromEl = document.getElementById('modal-' + from);
-  if (fromEl) { fromEl.classList.remove('is-open'); fromEl.style.display = 'none'; }
-  const toEl = document.getElementById('modal-' + to);
-  if (!toEl) return;
-  toEl.style.display = 'flex';
-  void toEl.offsetWidth;
-  toEl.classList.add('is-open');
+  const toEl   = document.getElementById('modal-' + to);
+  if (!fromEl || !toEl) return;
+  // Fade out current
+  fromEl.style.opacity = '0';
+  setTimeout(function() {
+    fromEl.classList.remove('is-open');
+    fromEl.style.display = 'none';
+    fromEl.style.opacity = '';
+    // Fade in next
+    toEl.style.display = 'flex';
+    toEl.style.opacity = '0';
+    void toEl.offsetWidth;
+    toEl.classList.add('is-open');
+    toEl.style.opacity = '';
+  }, 220);
 }
 function openAttorneyModal() { openModal('attorney'); }
 
