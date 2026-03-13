@@ -15,7 +15,7 @@
 })();
 
 /* === MOBILE NAV — premium slide drawer === */
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobileNav');
   const backdrop  = document.getElementById('mobileNavBackdrop');
@@ -44,7 +44,7 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeNav();
   });
-})();
+});
 
 /* === STICKY NAVBAR SCROLL STYLE === */
 const navbar = document.getElementById('navbar');
