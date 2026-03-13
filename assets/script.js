@@ -120,6 +120,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.process-card, .practice-card, .team-card, .practice-list-item, .team-quote-card').forEach((el, i) => {
   el.classList.add('scroll-reveal');
-  el.dataset.delay = i * 80;
+  el.dataset.delay = i * 50;
   revealObserver.observe(el);
 });
