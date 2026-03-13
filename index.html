@@ -38,10 +38,12 @@
         <li><a href="index.html#team" class="nav-link">Meet Our Lead Attorney</a></li>
         <li><a href="contact.html" class="nav-link">Contact Us</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
+
+    </div>
+  
+  <button class="hamburger" id="hamburger" aria-label="Open menu" style="position:absolute;right:24px;top:50%;transform:translateY(-50%);z-index:10010;">
         <span></span><span></span><span></span>
       </button>
-    </div>
   </nav>
     <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
   <div class="mobile-nav" id="mobileNav">
@@ -375,67 +377,111 @@
     </div>
   </footer>
 
-  <!-- PRACTICE MODALS -->
+
+  <!-- ═══ MODALS ═══ -->
+
   <div class="modal-overlay" id="modal-construction" onclick="closeModalOnOverlay(event,'construction')">
     <div class="modal">
       <button class="modal-close" onclick="closeModal('construction')">&#x2715;</button>
-      <div class="modal-image"><img src="assets/images/construction-2.jpg" alt="Construction Law"/><div class="modal-cyan-bar"></div></div>
+      <div class="modal-image">
+        <img src="assets/images/construction-2.jpg" alt="Construction Law"/>
+        <div class="modal-cyan-bar"></div>
+      </div>
       <div class="modal-content">
-        <div class="modal-header"><h2>Construction Law</h2><div class="modal-header-icon"><img src="assets/svgs/construction-law.svg" alt=""/></div></div>
+        <div class="modal-header">
+          <h2>Construction Law</h2>
+          <div class="modal-header-icon"><img src="assets/svgs/construction-law.svg" alt=""/></div>
+        </div>
         <a href="contact.html" class="btn btn-primary modal-contact-btn" onclick="closeModal('construction')" style="font-size:11px;padding:8px 16px;margin-bottom:16px;">Contact Us</a>
-        <div class="modal-body"><p>Our construction law practice covers the full project lifecycle. We advise on:</p><ul><li>FIDIC, NEC, JCT and bespoke construction contracts</li><li>Procurement and tender advisory</li><li>Claims preparation and management</li><li>Adjudication and dispute boards</li><li>PPP, EPC and BOOT project structures</li><li>Construction insurance and bonds</li></ul></div>
+        <div class="modal-body">
+          <p>Our construction law practice covers the full project lifecycle. We advise on:</p>
+          <ul><li>FIDIC, NEC, JCT and bespoke construction contracts</li><li>Procurement and tender advisory</li><li>Claims preparation and management</li><li>Adjudication and dispute boards</li><li>PPP, EPC and BOOT project structures</li><li>Construction insurance and bonds</li></ul>
+        </div>
         <div class="modal-divider"></div>
-        <div class="modal-related"><div class="modal-related-icon" onclick="switchModal('construction','arbitration')"><img src="assets/svgs/arbitration.svg" alt=""/></div><div class="modal-related-icon" onclick="switchModal('construction','commercial')"><img src="assets/svgs/commercial-transactions.svg" alt=""/></div><div class="modal-related-icon" onclick="switchModal('construction','litigation')"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div></div>
+        <div class="modal-related"><div class="modal-related-icon" onclick="switchModal('construction','arbitration')"><img src="assets/svgs/arbitration.svg" alt="Arbitration"/></div><div class="modal-related-icon" onclick="switchModal('construction','commercial')"><img src="assets/svgs/commercial-transactions.svg" alt="Commercial"/></div><div class="modal-related-icon" onclick="switchModal('construction','litigation')"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div></div>
       </div>
     </div>
   </div>
   <div class="modal-overlay" id="modal-arbitration" onclick="closeModalOnOverlay(event,'arbitration')">
     <div class="modal">
       <button class="modal-close" onclick="closeModal('arbitration')">&#x2715;</button>
-      <div class="modal-image"><img src="assets/images/arbitration-2.jpg" alt="Arbitration"/><div class="modal-cyan-bar"></div></div>
+      <div class="modal-image">
+        <img src="assets/images/arbitration-2.jpg" alt="Arbitration"/>
+        <div class="modal-cyan-bar"></div>
+      </div>
       <div class="modal-content">
-        <div class="modal-header"><h2>Arbitration</h2><div class="modal-header-icon"><img src="assets/svgs/arbitration.svg" alt=""/></div></div>
+        <div class="modal-header">
+          <h2>Arbitration</h2>
+          <div class="modal-header-icon"><img src="assets/svgs/arbitration.svg" alt=""/></div>
+        </div>
         <a href="contact.html" class="btn btn-primary modal-contact-btn" onclick="closeModal('arbitration')" style="font-size:11px;padding:8px 16px;margin-bottom:16px;">Contact Us</a>
-        <div class="modal-body"><p>We offer comprehensive arbitration services acting as counsel and arbitrator:</p><ul><li>ICC, LCIA, UNCITRAL and institutional arbitration</li><li>CADER and domestic tribunal proceedings</li><li>Emergency arbitration and interim relief</li><li>Arbitration agreement drafting</li><li>Award enforcement and challenge proceedings</li><li>Expert determination and dispute adjudication boards</li></ul></div>
+        <div class="modal-body">
+          <p>We offer comprehensive arbitration services acting as counsel and arbitrator:</p>
+          <ul><li>ICC, LCIA, UNCITRAL and institutional arbitration</li><li>CADER and domestic tribunal proceedings</li><li>Emergency arbitration and interim relief</li><li>Arbitration agreement drafting</li><li>Award enforcement and challenge proceedings</li><li>Expert determination and dispute adjudication boards</li></ul>
+        </div>
         <div class="modal-divider"></div>
-        <div class="modal-related"><div class="modal-related-icon" onclick="switchModal('arbitration','construction')"><img src="assets/svgs/construction-law.svg" alt=""/></div><div class="modal-related-icon" onclick="switchModal('arbitration','commercial')"><img src="assets/svgs/commercial-transactions.svg" alt=""/></div><div class="modal-related-icon" onclick="switchModal('arbitration','litigation')"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div></div>
+        <div class="modal-related"><div class="modal-related-icon" onclick="switchModal('arbitration','construction')"><img src="assets/svgs/construction-law.svg" alt="Construction"/></div><div class="modal-related-icon" onclick="switchModal('arbitration','commercial')"><img src="assets/svgs/commercial-transactions.svg" alt="Commercial"/></div><div class="modal-related-icon" onclick="switchModal('arbitration','litigation')"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div></div>
       </div>
     </div>
   </div>
   <div class="modal-overlay" id="modal-commercial" onclick="closeModalOnOverlay(event,'commercial')">
     <div class="modal">
       <button class="modal-close" onclick="closeModal('commercial')">&#x2715;</button>
-      <div class="modal-image"><img src="assets/images/commercial-2.jpg" alt="Commercial Transactions"/><div class="modal-cyan-bar"></div></div>
+      <div class="modal-image">
+        <img src="assets/images/commercial-2.jpg" alt="Commercial Transactions"/>
+        <div class="modal-cyan-bar"></div>
+      </div>
       <div class="modal-content">
-        <div class="modal-header"><h2>Commercial Transactions</h2><div class="modal-header-icon"><img src="assets/svgs/commercial-transactions.svg" alt=""/></div></div>
+        <div class="modal-header">
+          <h2>Commercial Transactions</h2>
+          <div class="modal-header-icon"><img src="assets/svgs/commercial-transactions.svg" alt=""/></div>
+        </div>
         <a href="contact.html" class="btn btn-primary modal-contact-btn" onclick="closeModal('commercial')" style="font-size:11px;padding:8px 16px;margin-bottom:16px;">Contact Us</a>
-        <div class="modal-body"><p>Our commercial practice provides practical, business-focused legal advice:</p><ul><li>Commercial contract drafting and negotiation</li><li>Mergers, acquisitions and joint ventures</li><li>Corporate governance and company secretarial</li><li>Regulatory compliance and licensing</li><li>Real estate and conveyancing</li><li>Banking and project finance</li></ul></div>
+        <div class="modal-body">
+          <p>Our commercial practice provides practical, business-focused legal advice:</p>
+          <ul><li>Commercial contract drafting and negotiation</li><li>Mergers, acquisitions and joint ventures</li><li>Corporate governance and company secretarial</li><li>Regulatory compliance and licensing</li><li>Real estate and conveyancing</li><li>Banking and project finance</li></ul>
+        </div>
         <div class="modal-divider"></div>
-        <div class="modal-related"><div class="modal-related-icon" onclick="switchModal('commercial','construction')"><img src="assets/svgs/construction-law.svg" alt=""/></div><div class="modal-related-icon" onclick="switchModal('commercial','arbitration')"><img src="assets/svgs/arbitration.svg" alt=""/></div><div class="modal-related-icon" onclick="switchModal('commercial','litigation')"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div></div>
+        <div class="modal-related"><div class="modal-related-icon" onclick="switchModal('commercial','construction')"><img src="assets/svgs/construction-law.svg" alt="Construction"/></div><div class="modal-related-icon" onclick="switchModal('commercial','arbitration')"><img src="assets/svgs/arbitration.svg" alt="Arbitration"/></div><div class="modal-related-icon" onclick="switchModal('commercial','litigation')"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div></div>
       </div>
     </div>
   </div>
   <div class="modal-overlay" id="modal-litigation" onclick="closeModalOnOverlay(event,'litigation')">
     <div class="modal">
       <button class="modal-close" onclick="closeModal('litigation')">&#x2715;</button>
-      <div class="modal-image"><img src="assets/images/litigation-2.jpg" alt="Litigation"/><div class="modal-cyan-bar"></div></div>
+      <div class="modal-image">
+        <img src="assets/images/litigation-2.jpg" alt="Litigation"/>
+        <div class="modal-cyan-bar"></div>
+      </div>
       <div class="modal-content">
-        <div class="modal-header"><h2>Litigation</h2><div class="modal-header-icon"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div></div>
+        <div class="modal-header">
+          <h2>Litigation</h2>
+          <div class="modal-header-icon"><img src="assets/svgs/litigation-icon.svg" alt=""/></div>
+        </div>
         <a href="contact.html" class="btn btn-primary modal-contact-btn" onclick="closeModal('litigation')" style="font-size:11px;padding:8px 16px;margin-bottom:16px;">Contact Us</a>
-        <div class="modal-body"><p>Our litigation practice combines aggressive advocacy with strategic thinking:</p><ul><li>Complex commercial disputes</li><li>Construction and engineering disputes</li><li>Shareholder and corporate disputes</li><li>Injunctive relief applications</li><li>Appeals and judicial reviews</li><li>Enforcement proceedings</li></ul></div>
+        <div class="modal-body">
+          <p>Our litigation practice combines aggressive advocacy with strategic thinking:</p>
+          <ul><li>Complex commercial disputes</li><li>Construction and engineering disputes</li><li>Shareholder and corporate disputes</li><li>Injunctive relief applications</li><li>Appeals and judicial reviews</li><li>Enforcement proceedings</li></ul>
+        </div>
         <div class="modal-divider"></div>
-        <div class="modal-related"><div class="modal-related-icon" onclick="switchModal('litigation','construction')"><img src="assets/svgs/construction-law.svg" alt=""/></div><div class="modal-related-icon" onclick="switchModal('litigation','arbitration')"><img src="assets/svgs/arbitration.svg" alt=""/></div><div class="modal-related-icon" onclick="switchModal('litigation','commercial')"><img src="assets/svgs/commercial-transactions.svg" alt=""/></div></div>
+        <div class="modal-related"><div class="modal-related-icon" onclick="switchModal('litigation','construction')"><img src="assets/svgs/construction-law.svg" alt="Construction"/></div><div class="modal-related-icon" onclick="switchModal('litigation','arbitration')"><img src="assets/svgs/arbitration.svg" alt="Arbitration"/></div><div class="modal-related-icon" onclick="switchModal('litigation','commercial')"><img src="assets/svgs/commercial-transactions.svg" alt="Commercial"/></div></div>
       </div>
     </div>
   </div>
-
-  <!-- ATTORNEY MODAL -->
   <div class="modal-overlay" id="modal-attorney" onclick="closeModalOnOverlay(event,'attorney')">
     <div class="modal attorney-modal">
       <button class="modal-close" onclick="closeModal('attorney')">&#x2715;</button>
-      <div class="modal-image"><img src="assets/images/attorney.jpg" alt="Milton Ocen" style="object-position:top center"/><div class="modal-cyan-bar"></div></div>
+      <div class="modal-image">
+        <img src="assets/images/attorney.jpg" alt="Milton Ocen" style="object-position:top center"/>
+        <div class="modal-cyan-bar"></div>
+      </div>
       <div class="modal-content">
-        <div class="modal-header"><div><h2>Milton Ocen</h2><div class="attorney-role">Senior Partner</div></div></div>
+        <div class="modal-header">
+          <div>
+            <h2>Milton Ocen</h2>
+            <div class="attorney-role">Senior Partner</div>
+          </div>
+        </div>
         <p class="attorney-credentials">MSc Construction Law &amp; Dispute Resolution, British University in Dubai &middot; LLB (MUK) &middot; Dip LP(LDC) &middot; MCIArb &middot; LCIA Member</p>
         <div class="attorney-bio">
           <p>Milton F. Ocen is the Managing Partner at Milton Advocates, a firm specialising in Construction Law, Arbitration, Commercial Transactions, and Litigation. He holds an MSc in Construction Law &amp; Dispute Resolution from the British University in Dubai and an LLB from Makerere University.</p>
@@ -446,12 +492,12 @@
           </div>
           <button class="bio-toggle" id="bioToggle" onclick="toggleBio()">Read More <span class="bio-toggle-arrow" id="bioToggleArrow">&#x2193;</span></button>
         </div>
-        <div class="attorney-cta"><a href="contact.html" class="btn btn-primary" onclick="closeModal('attorney')">Let&rsquo;s Talk</a></div>
+        <div class="attorney-cta">
+          <a href="contact.html" class="btn btn-primary" onclick="closeModal('attorney')">Let&rsquo;s Talk</a>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- TEAM MEMBER MODALS -->
   <div class="modal-overlay" id="modal-tm1" onclick="closeModalOnOverlay(event,'tm1')">
     <div class="modal attorney-modal">
       <button class="modal-close" onclick="closeModal('tm1')">&#x2715;</button>
@@ -460,12 +506,18 @@
         <div class="modal-cyan-bar"></div>
       </div>
       <div class="modal-content">
-        <div class="modal-header"><div><h2>Position Available</h2><div class="attorney-role">Associate Advocate</div></div></div>
+        <div class="modal-header">
+          <div>
+            <h2>Position Available</h2>
+            <div class="attorney-role">Associate Advocate</div>
+          </div>
+        </div>
         <div class="attorney-bio"><p>We are looking for a dynamic associate advocate with a passion for construction and commercial law. Apply via our careers page.</p></div>
         <div class="attorney-cta"><a href="careers.html" class="btn btn-primary">View Careers</a></div>
       </div>
     </div>
-  </div>  <div class="modal-overlay" id="modal-tm2" onclick="closeModalOnOverlay(event,'tm2')">
+  </div>
+  <div class="modal-overlay" id="modal-tm2" onclick="closeModalOnOverlay(event,'tm2')">
     <div class="modal attorney-modal">
       <button class="modal-close" onclick="closeModal('tm2')">&#x2715;</button>
       <div class="modal-image">
@@ -473,10 +525,36 @@
         <div class="modal-cyan-bar"></div>
       </div>
       <div class="modal-content">
-        <div class="modal-header"><div><h2>Position Available</h2><div class="attorney-role">Junior Associate</div></div></div>
+        <div class="modal-header">
+          <div>
+            <h2>Position Available</h2>
+            <div class="attorney-role">Junior Associate</div>
+          </div>
+        </div>
         <div class="attorney-bio"><p>Milton Advocates welcomes applications from junior advocates eager to build expertise in arbitration and dispute resolution.</p></div>
         <div class="attorney-cta"><a href="careers.html" class="btn btn-primary">View Careers</a></div>
       </div>
     </div>
-  </div>  <div class="modal-overlay" id="modal-tm3" onclick="closeModalOnOverlay(event,'tm3')">
-    <div class=
+  </div>
+  <div class="modal-overlay" id="modal-tm3" onclick="closeModalOnOverlay(event,'tm3')">
+    <div class="modal attorney-modal">
+      <button class="modal-close" onclick="closeModal('tm3')">&#x2715;</button>
+      <div class="modal-image">
+        <img src="assets/images/attorney.jpg" alt="Position Available" style="object-position:top center;filter:grayscale(40%) brightness(0.7);"/>
+        <div class="modal-cyan-bar"></div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2>Position Available</h2>
+            <div class="attorney-role">Legal Researcher</div>
+          </div>
+        </div>
+        <div class="attorney-bio"><p>We are seeking a sharp legal researcher to support our senior partners. Strong writing and research skills essential. Apply via our careers page.</p></div>
+        <div class="attorney-cta"><a href="careers.html" class="btn btn-primary">View Careers</a></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
