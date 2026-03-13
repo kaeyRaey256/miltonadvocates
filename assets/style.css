@@ -65,7 +65,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .navbar {
   position: sticky; top: 0; z-index: 1000; padding: 14px 0;
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a3a8f 100%);
-  box-shadow: 0 2px 20px rgba(0,0,128,0.4); overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0,0,128,0.4);
   transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
 }
 .navbar.hide { opacity: 0; transform: translateY(-100%); pointer-events: none; }
@@ -323,8 +323,10 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .process-card:nth-child(3) .process-card-icon { animation: float 4s ease-in-out 1.2s infinite; }
 
 /* === PRACTICE AREAS === */
-.practice-section { padding: 100px 0; background: var(--navy); position: relative; overflow: hidden; isolation: isolate; }
-.practice-bg { position: absolute; inset: 0; background-image: url('assets/images/practice-area-background.png'); background-size: cover; background-position: center; opacity: 0.28; mix-blend-mode: screen; pointer-events: none; z-index: 0; }
+.practice-section { padding: 100px 0; background: transparent; position: relative; overflow: hidden; }
+.practice-bg { position: absolute; inset: 0; background-image: url('assets/images/practice-area-background.png'); background-size: cover; background-position: center; pointer-events: none; z-index: 0; }
+.practice-section::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,128,0.82); z-index: 1; pointer-events: none; }
+.practice-section > * { position: relative; z-index: 2; }
 .practice-section .section-eyebrow span { color: var(--cyan); }
 .practice-section .section-eyebrow-line { background: var(--cyan); }
 .practice-section h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--offwhite); margin-bottom: 52px; position: relative; }
@@ -528,14 +530,16 @@ footer .container { position: relative; z-index: 1; }
   background: rgba(0,0,50,0.75);
   backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
   z-index: 10000;
-  display: flex; align-items: center; justify-content: center;
+  display: none;
+  align-items: center; justify-content: center;
   padding: 24px;
-  opacity: 0; visibility: hidden; pointer-events: none;
-  transition: opacity 0.35s var(--ease), visibility 0s linear 0.35s;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
-.modal-overlay.active {
-  opacity: 1; visibility: visible; pointer-events: all;
-  transition: opacity 0.35s var(--ease), visibility 0s linear 0s;
+.modal-overlay.is-open {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
 }
 .modal { background: #fff; border-radius: 4px; max-width: 880px; width: 100%; max-height: 90vh; overflow-y: auto; display: grid; grid-template-columns: 340px 1fr; position: relative; box-shadow: 0 32px 80px rgba(0,0,0,0.4); }
 .modal-image { position: relative; min-height: 400px; overflow: hidden; }
@@ -548,7 +552,7 @@ footer .container { position: relative; z-index: 1; }
 .modal-header h2 { font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1.2; }
 .modal-header-icon { width: 48px; height: 48px; flex-shrink: 0; }
 .modal-header-icon img, .modal-header-icon svg { width: 100%; height: 100%; }
-.modal-contact-btn { display: none; }
+.modal-contact-btn { display: inline-flex; }
 .modal-body p { color: var(--navy); opacity: 0.78; font-size: 15px; line-height: 1.75; margin-bottom: 16px; }
 .modal-body ul { padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
 .modal-body ul li { color: var(--navy); opacity: 0.78; font-size: 15px; line-height: 1.6; }
@@ -689,21 +693,12 @@ footer .container { position: relative; z-index: 1; }
   0%, 100% { transform: translateY(0) scale(1); }
   50% { transform: translateY(-8px) scale(1.04); }
 }
-/* Micro text reveal on careers page */
-.careers-content h1 {
-  animation: fadeUp 0.7s cubic-bezier(0.23,1,0.32,1) 0.2s both;
-}
-.careers-content p {
-  animation: fadeUp 0.7s cubic-bezier(0.23,1,0.32,1) 0.35s both;
-}
-.careers-cta {
-  animation: fadeUp 0.7s cubic-bezier(0.23,1,0.32,1) 0.5s both;
-}
+
 .careers-icon svg { width: 100%; height: 100%; }
 .careers-eyebrow { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px; }
 .careers-eyebrow-line { width: 32px; height: 1px; background: rgba(0,231,255,0.4); }
 .careers-eyebrow span { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(0,231,255,0.7); }
-.careers-content h1 { font-size: clamp(32px, 4vw, 52px); color: var(--offwhite); line-height: 1.15; margin-bottom: 24px; }
+.careers-content h1 { font-size: clamp(20px, 2.4vw, 32px); color: var(--offwhite); line-height: 1.3; margin-bottom: 24px; max-width: 720px; margin-left: auto; margin-right: auto; }
 .careers-content h1 span { color: var(--cyan); }
 .careers-content p { font-size: 16px; color: rgba(249,248,247,0.72); line-height: 1.8; max-width: 480px; margin: 0 auto 44px; }
 .careers-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
@@ -767,6 +762,17 @@ footer .container { position: relative; z-index: 1; }
 @media (max-width: 768px) {
   .container { padding: 0 24px; }
   .positions-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  /* Attorney card overlay auto-reveals on mobile — no tap needed */
+  .team-card .team-card-overlay {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .team-card.auto-reveal .team-card-overlay {
+    opacity: 1;
+  }
+  /* Remove hover trigger on touch devices */
+  .team-card:hover .team-card-overlay { opacity: 0; }
+  .team-card.auto-reveal:hover .team-card-overlay { opacity: 1; }
   .top-bar { display: none; }
   .nav-links { display: none; }
   .hamburger { display: flex; flex-direction: column; }
