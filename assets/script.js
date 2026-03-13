@@ -75,14 +75,17 @@
 })();
 
 /* === STICKY NAVBAR SCROLL STYLE === */
-const navbarScroll = document.getElementById('navbar');
-if (navbarScroll) window.addEventListener('scroll', () => {
-  if (!navbarScroll.classList.contains('hide')) {
-    navbarScroll.style.boxShadow = window.scrollY > 60
-      ? '0 4px 32px rgba(0,0,128,0.55)'
-      : '0 2px 20px rgba(0,0,128,0.4)';
-  }
-}, { passive: true });
+(function() {
+  var nb = document.getElementById('navbar');
+  if (!nb) return;
+  window.addEventListener('scroll', function() {
+    if (!nb.classList.contains('hide')) {
+      nb.style.boxShadow = window.scrollY > 60
+        ? '0 4px 32px rgba(0,0,128,0.55)'
+        : '0 2px 20px rgba(0,0,128,0.4)';
+    }
+  }, { passive: true });
+})();
 
 /* === SCROLL REVEAL === */
 const reveals = document.querySelectorAll('.scroll-reveal');
