@@ -67,6 +67,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a3a8f 100%);
   box-shadow: 0 2px 20px rgba(0,0,128,0.4);
   transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+  isolation: isolate;
 }
 .navbar.hide { opacity: 0; transform: translateY(-100%); pointer-events: none; }
 /* Navbar animated crosshatch pattern */
@@ -374,9 +375,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
   0%   { background-position: 0 0, 0 0; }
   100% { background-position: 60px 60px, 100px 100px; }
 }
-.practice-section > * { position: relative; z-index: 1; }
 .practice-bg { display: none; }
-
 .practice-section > * { position: relative; z-index: 2; }
 .practice-section .section-eyebrow span { color: var(--cyan); }
 .practice-section .section-eyebrow-line { background: var(--cyan); }
@@ -810,21 +809,6 @@ footer .container { position: relative; z-index: 1; }
 }
 .careers-status-note-icon { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: rgba(0,0,128,0.05); display: flex; align-items: center; justify-content: center; }
 .careers-status-note p { font-size: 13px; color: var(--navy); opacity: 0.55; line-height: 1.6; }
-
-/* Removed old careers-page selectors — fully replaced */
-.careers-page,
-.careers-anim-bg,
-.careers-orb,
-.careers-orb-1,
-.careers-orb-2,
-.careers-orb-3,
-.careers-icon-wrap,
-.careers-icon-ring,
-.careers-icon,
-.careers-eyebrow,
-.careers-eyebrow-line,
-.careers-content { all: unset; }
-
 
 /* === POSITION CARDS (team expand) === */
 .positions-grid {
