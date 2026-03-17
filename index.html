@@ -3,119 +3,15 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Legal | Milton Advocates</title>
+  <title>Milton Advocates | Construction Law &amp; Arbitration Specialists</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css"/>
-  <style>
-    /* ── Legal page specific styles ── */
-    .legal-hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a3a8f 100%);
-      position: relative; overflow: hidden; padding: 80px 0 72px; isolation: isolate;
-    }
-    .legal-hero::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-      background-image:
-        repeating-linear-gradient(45deg, transparent, transparent 28px, rgba(0,231,255,0.03) 28px, rgba(0,231,255,0.03) 29px),
-        repeating-linear-gradient(-45deg, transparent, transparent 48px, rgba(0,128,255,0.018) 48px, rgba(0,128,255,0.018) 49px);
-      background-size: 60px 60px, 100px 100px;
-      animation: navPatternDrift 20s linear infinite;
-    }
-    .legal-hero .container { position: relative; z-index: 1; }
-    .legal-hero-eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-    .legal-hero-eyebrow-line { width: 40px; height: 2px; background: var(--cyan); flex-shrink: 0; }
-    .legal-hero-eyebrow span { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan); }
-    .legal-hero h1 { font-size: clamp(28px, 3.5vw, 48px); color: var(--offwhite); line-height: 1.15; margin-bottom: 16px; }
-    .legal-hero-sub { color: rgba(249,248,247,0.7); font-size: 15px; line-height: 1.7; max-width: 540px; }
-
-    /* Tab navigation */
-    .legal-tabs-wrap {
-      background: var(--offwhite); border-bottom: 1px solid rgba(0,0,128,0.08);
-      position: sticky; top: 0; z-index: 100;
-    }
-    .legal-tabs { display: flex; gap: 0; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-    .legal-tab {
-      padding: 18px 28px; font-family: 'Nunito Sans', sans-serif; font-size: 13px;
-      font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-      color: rgba(26,26,62,0.5); text-decoration: none; border-bottom: 3px solid transparent;
-      transition: color 0.25s, border-color 0.25s; white-space: nowrap;
-    }
-    .legal-tab:hover { color: var(--navy); }
-    .legal-tab.active { color: var(--navy); border-bottom-color: var(--cyan); }
-
-    /* Body */
-    .legal-body { background: var(--offwhite); padding: 0 0 100px; }
-    .legal-section {
-      max-width: 800px; margin: 0 auto; padding: 72px 40px 0;
-      scroll-margin-top: 120px;
-    }
-    .legal-section-header { margin-bottom: 40px; }
-    .legal-section-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,0,128,0.06); border: 1px solid rgba(0,0,128,0.12);
-      border-radius: 20px; padding: 6px 14px; margin-bottom: 20px;
-    }
-    .legal-section-badge span { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); }
-    .legal-section-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; }
-    .legal-section h2 { font-size: clamp(26px, 3vw, 38px); color: var(--navy); margin-bottom: 12px; line-height: 1.2; }
-    .legal-section-meta { font-size: 13px; color: rgba(26,26,62,0.45); font-style: italic; margin-bottom: 8px; }
-    .legal-divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--navy), var(--cyan)); margin-bottom: 36px; }
-
-    /* Content typography */
-    .legal-content h3 {
-      font-family: 'Nunito Sans', sans-serif; font-size: 13px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy);
-      margin: 36px 0 12px; padding-top: 4px;
-    }
-    .legal-content h3:first-child { margin-top: 0; }
-    .legal-content p {
-      font-size: 15px; color: rgba(26,26,62,0.78); line-height: 1.85;
-      margin-bottom: 16px;
-    }
-    .legal-content ul {
-      padding-left: 0; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; list-style: none;
-    }
-    .legal-content ul li {
-      font-size: 15px; color: rgba(26,26,62,0.78); line-height: 1.75;
-      padding-left: 20px; position: relative;
-    }
-    .legal-content ul li::before {
-      content: ''; position: absolute; left: 0; top: 10px;
-      width: 5px; height: 5px; border-radius: 50%; background: var(--cyan);
-    }
-    .legal-content a { color: var(--navy); font-weight: 600; border-bottom: 1px solid rgba(0,0,128,0.2); transition: border-color 0.2s; }
-    .legal-content a:hover { border-color: var(--navy); }
-
-    /* Section separator */
-    .legal-sep {
-      max-width: 800px; margin: 72px auto 0; padding: 0 40px;
-      border-top: 1px solid rgba(0,0,128,0.08);
-    }
-
-    /* Contact card */
-    .legal-contact-card {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-      border-radius: 4px; padding: 36px 40px; margin-top: 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 24px; flex-wrap: wrap;
-    }
-    .legal-contact-card p { color: rgba(249,248,247,0.85); font-size: 15px; line-height: 1.7; margin: 0; }
-    .legal-contact-card strong { color: var(--offwhite); }
-    .legal-contact-card a.btn { flex-shrink: 0; }
-
-    @media (max-width: 768px) {
-      .legal-tabs { padding: 0 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .legal-tab { padding: 16px 20px; font-size: 12px; }
-      .legal-section { padding: 52px 24px 0; }
-      .legal-sep { padding: 0 24px; margin-top: 52px; }
-      .legal-contact-card { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
-    }
-  </style>
 </head>
 <body>
 
-<div class="top-bar">
+  <div class="top-bar">
     <div class="container">
       <div class="top-bar-left">
         <a href="https://maps.google.com/?q=UAP+Business+Park+Nakawa+House+Kampala" target="_blank">
@@ -150,194 +46,282 @@
       </button>
   </nav>
 
-
-  <!-- ── Legal Hero ── -->
-  <section class="legal-hero">
+  <section class="hero" id="home">
+    <div class="hero-bg-graphic"></div>
+    <img src="assets/images/attorney-hero.png" alt="Milton Ocen" class="hero-image"/>
+    <div class="hero-image-overlay"></div>
     <div class="container">
-      <div class="legal-hero-eyebrow">
-        <div class="legal-hero-eyebrow-line"></div>
-        <span>Legal Information</span>
+      <div class="hero-content">
+        <div class="hero-eyebrow animate-in"><div class="hero-eyebrow-line"></div><span>Who We Are</span></div>
+        <h1 class="animate-in animate-in-delay-1">Construction Law &amp;<br><span>Arbitration Specialists</span></h1>
+        <p class="animate-in animate-in-delay-2">Strategic, ethical and results-oriented legal services across Construction Law, Energy, Corporate &amp; Commercial, Technology, Tax, Arbitration and Public Interest Litigation — serving Uganda and international clients since 2013.</p>
+        <div class="hero-cta animate-in animate-in-delay-3">
+          <a href="#practice" class="btn btn-outline-white">Our Practice Areas</a>
+          <a href="contact.html" class="btn btn-cyan">Get In Touch</a>
+        </div>
       </div>
-      <h1>Privacy, Terms &amp;<br>Legal Notices</h1>
-      <p class="legal-hero-sub">How we collect and use your information, the terms that govern use of this website, and our professional disclaimer.</p>
+    </div>
+  </section>
+  <div class="section-divider"></div>
+
+  <section class="process-section" id="about">
+    <div class="container">
+      <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>How We Work</span></div>
+      <h2><strong>Our Process:</strong><br>Simple and Transparent</h2>
+      <p class="process-subtitle">Engaging our services is a straightforward process.</p>
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-number">01</div>
+          <div class="process-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102 104"><path fill="#01acf1" d="M50.5,78.6v-2.62c0-4.33-3.52-7.85-7.85-7.85h-.98c1.74-3.28,3.59-7.24,3.59-9.16,0-3.62-2.93-6.41-6.55-6.41s-6.55,2.8-6.55,6.41c0,1.93,1.86,5.88,3.59,9.16h-.98c-4.33,0-7.85,3.52-7.85,7.85v2.62c-1.45,0-2.62,1.17-2.62,2.62s1.17,2.62,2.62,2.62h23.56c1.45,0,2.62-1.17,2.62-2.62s-1.17-2.62-2.62-2.62Zm-5.24,0h-13.09v-2.62c0-1.45,1.17-2.62,2.62-2.62h7.85c1.45,0,2.62,1.17,2.62,2.62v2.62Zm20.94-28.8h-10.47c-1.45,0-2.62-1.17-2.62-2.62s1.17-2.62,2.62-2.62h10.47c1.45,0,2.62,1.17,2.62,2.62s-1.17-2.62-2.62,2.62Zm20.94-15.71v36.65c0,7.22-5.87,13.09-13.09,13.09h-13.09c-1.45,0-2.62-1.17-2.62-2.62s1.17-2.62,2.62-2.62h13.09c4.33,0,7.85-3.52,7.85-7.85V34.09c0-4.33-3.52-7.85-7.85-7.85h-20.94c-4.33,0-7.85,3.52-7.85,7.85v10.61c0,1.45-1.17,2.62-2.62,2.62s-2.62-1.17-2.62-2.62v-10.61c0-7.22,5.87-13.09,13.09-13.09h20.94c7.22,0,13.09,5.87,13.09,13.09Zm-28.8,30.11c0,5.05,4.11,9.16,9.16,9.16s9.16-4.11,9.16-9.16-4.11-9.16-9.16-9.16-9.16,4.11-9.16,9.16Zm13.09,0c0,2.17-1.76,3.93-3.93,3.93s-3.93-1.76-3.93-3.93,1.76-3.93,3.93-3.93,3.93,1.76,3.93,3.93Zm2.62-27.49c0,1.45-1.17,2.62-2.62,2.62h-15.71c-1.45,0-2.62-1.17-2.62-2.62s1.17-2.62,2.62-2.62h15.71c1.45,0,2.62,1.17,2.62,2.62Z"/></svg></div>
+          <h3>Consultation and Needs Assessment</h3>
+          <p>We begin with a thorough consultation to assess your specific needs and goals, ensuring we fully understand your unique legal challenges.</p>
+          <a href="contact.html" class="btn btn-primary">Contact Us</a>
+        </div>
+        <div class="process-card">
+          <div class="process-number">02</div>
+          <div class="process-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102 104"><path fill="#01acf1" d="M77.97,69.19v-19.45h2.71v-10.83h-5.41v5.41h-5.41v-5.41h-5.41v5.41h-5.41v-5.41h-5.41v10.83h2.71v16.31c2.64,1.97,4.47,4.83,5.14,8.05h13.75c1.43-.09,2.67,1,2.76,2.43,0,.09,0,.19,0,.28v2.71h-16.24v5.41h21.65v-8.12c.04-3.45-2.14-6.53-5.41-7.62Zm-16.24-19.45h10.83v18.95h-10.83v-18.95Zm-11.45,19.25c-2.47-8.02-4.05-16.29-4.72-24.66h2.63v-5.41h-1l3.45-7.01c.9-2.54-.43-5.32-2.97-6.22-.52-.19-1.08-.28-1.63-.28h-5.94v-5.41h-5.41v5.41h-5.95c-2.69,0-4.88,2.17-4.88,4.86,0,.56,.09,1.11,.28,1.63l3.47,7.01h-1.06v5.41h2.63c-.66,8.37-2.24,16.64-4.71,24.66-3.55,.94-6.02,4.14-6.04,7.81v8.12H56.32v-8.12c-.01-3.67-2.49-6.87-6.03-7.81h0ZM29.63,30.82h15.54l-4,8.09h-7.52l-4.01-8.09Zm10.52,13.51c.58,8.25,2.06,16.42,4.4,24.36h-14.35c2.35-7.93,3.83-16.1,4.4-24.36h5.55Zm10.76,35.18H23.84v-2.71c0-1.49,1.21-2.71,2.71-2.71h21.65c1.49,0,2.71,1.21,2.71,2.71v2.71Z"/></svg></div>
+          <h3>Customised Strategy and Action Plan</h3>
+          <p>Based on the consultation, we develop a customised strategy and action plan to achieve the best possible outcome for your case.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">03</div>
+          <div class="process-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102 104"><path fill="#01acf1" d="M38.78,71.7c0-2.58-.05-5.16,.01-7.73,.05-2.01-.35-3.69-2.7-3.92-1.82-.18-2.85,1.32-2.86,4.04-.02,5.24-.1,10.48,.04,15.72,.06,2.2-.7,2.46-2.54,1.8-3.36-1.2-5.58-3.99-5.71-7.78-.13-3.69-.15-7.39,0-11.08,.2-4.92,3.54-8.29,8.46-8.1,2.96,.12,4.52-.85,5.64-3.48,1.18-2.75,2.77-5.33,4.16-7.98,1.06-2.03,2.72-2.93,4.9-2.18,2.14,.73,3.04,2.39,2.63,4.68-.37,2.03-.63,4.08-1.1,6.08-.47,2.03-.14,3.02,2.28,2.84,2.82-.2,5.67-.09,8.5-.03,5.82,.12,9.27,4.33,8.28,10.13-.49,2.87-1.04,5.74-1.68,8.59-1.16,5.17-5.41,8.65-10.71,8.73-5.24,.07-10.48-.03-15.72,.05-1.41,.02-1.98-.33-1.92-1.84,.11-2.83,.03-5.67,.03-8.5Z"/><path fill="#01acf1" d="M47.84,18.68l1.77,3.59c.18,.36,.52,.61,.91,.66l3.97,.58c1,.14,1.39,1.37,.67,2.07l-2.87,2.8c-.29,.28-.42,.68-.35,1.08l.68,3.95c.17,.99-.87,1.75-1.76,1.28l-3.55-1.86c-.35-.19-.78-.19-1.13,0l-3.55,1.86c-.89,.47-1.93-.29-1.76-1.28l.68-3.95c.07-.39-.06-.8-.35-1.08l-2.87-2.8c-.72-.7-.32-1.93,.67-2.07l3.97-.58c.4-.06,.74-.31,.91-.66l1.77-3.59c.45-.9,1.73-.9,2.18,0Z"/><path fill="#01acf1" d="M25.66,26.74l1.77,3.59c.18,.36,.52,.61,.91,.66l3.97,.58c1,.14,1.39,1.37,.67,2.07l-2.87,2.8c-.29,.28-.42,.68-.35,1.08l.68,3.95c.17,.99-.87,1.75-1.76,1.28l-3.55-1.86c-.35-.19-.78-.19-1.13,0l-3.55,1.86c-.89,.47-1.93-.29-1.76-1.28l.68-3.95c.07-.39-.06-.8-.35-1.08l-2.87-2.8c-.72-.7-.32-1.93,.67-2.07l3.97-.58c.4-.06,.74-.31,.91-.66l1.77-3.59c.45-.9,1.73-.9,2.18,0Z"/><path fill="#01acf1" d="M70.02,26.74l1.77,3.59c.18,.36,.52,.61,.91,.66l3.97,.58c1,.14,1.39,1.37,.67,2.07l-2.87,2.8c-.29,.28-.42,.68-.35,1.08l.68,3.95c.17,.99-.87,1.75-1.76,1.28l-3.55-1.86c-.35-.19-.78-.19-1.13,0l-3.55,1.86c-.89,.47-1.93-.29-1.76-1.28l.68-3.95c.07-.39-.06-.8-.35-1.08l-2.87-2.8c-.72-.7-.32-1.93,.67-2.07l3.97-.58c.4-.06,.74-.31,.91-.66l1.77-3.59c.45-.9,1.73-.9,2.18,0Z"/></svg></div>
+          <h3>Resolution and Client Satisfaction</h3>
+          <p>We work diligently to resolve your case efficiently and effectively, ensuring your satisfaction throughout the process.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ── Sticky Tab Navigation ── -->
-  <div class="legal-tabs-wrap">
-    <nav class="legal-tabs" aria-label="Legal sections">
-      <a href="#privacy"    class="legal-tab active" onclick="setActive(this)">Privacy Policy</a>
-      <a href="#terms"      class="legal-tab"        onclick="setActive(this)">Terms of Use</a>
-      <a href="#disclaimer" class="legal-tab"        onclick="setActive(this)">Disclaimer</a>
-    </nav>
-  </div>
-
-  <!-- ── Legal Body ── -->
-  <div class="legal-body">
-
-    <!-- PRIVACY POLICY -->
-    <section class="legal-section scroll-reveal" id="privacy">
-      <div class="legal-section-header">
-        <div class="legal-section-badge">
-          <div class="legal-section-badge-dot"></div>
-          <span>Privacy Policy</span>
+  <section class="practice-section" id="practice">
+    <div class="practice-bg"></div>
+    <div class="container" style="position:relative;">
+      <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>What We Do</span></div>
+      <h2>Practice Areas</h2>
+      <div class="practice-grid">
+        <div class="practice-card" onclick="openModal('construction')">
+          <div class="practice-card-icon"><img src="assets/svgs/construction-law.svg" alt="Construction Law"/></div>
+          <h3>Construction Law</h3>
+          <p>Full lifecycle legal services for construction, engineering and energy projects — from procurement and contract administration through dispute resolution.</p>
+          <span class="practice-card-link">Learn More &#x2192;</span>
         </div>
-        <h2>How We Handle Your Information</h2>
-        <p class="legal-section-meta">Last updated: January 2025</p>
-        <div class="legal-divider"></div>
-      </div>
-      <div class="legal-content">
-        <h3>Overview</h3>
-        <p>Milton Advocates ("we", "us", "our") is committed to protecting your personal information. This Privacy Policy explains what information we collect, how we use it, who we share it with, and the rights you hold in relation to it. It applies to information collected through this website and through our client engagement process.</p>
-        <p>We collect only the minimum personal information necessary. If you believe we hold information about you that is excessive or inaccurate, please contact us immediately.</p>
-
-        <h3>Information We Collect</h3>
-        <p>We may collect personal information when you:</p>
-        <ul>
-          <li>Submit an enquiry or contact form on this website</li>
-          <li>Send us your curriculum vitae or career application</li>
-          <li>Instruct us in connection with a legal matter</li>
-          <li>Communicate with us by email, telephone, or post</li>
-          <li>Visit and browse this website (technical data such as IP address and browser type, collected via standard server logs)</li>
-        </ul>
-        <p>The personal information we collect may include your name, email address, telephone number, company name, and the content of any correspondence you send us. We do not collect special category data (such as health, religious, or biometric information) through this website, and we ask that you do not submit such information to us.</p>
-
-        <h3>How We Use Your Information</h3>
-        <p>We use the personal information we collect to:</p>
-        <ul>
-          <li>Respond to your enquiries and provide legal services</li>
-          <li>Verify your identity and manage our client relationship</li>
-          <li>Comply with our professional, regulatory, and legal obligations as advocates regulated under the laws of Uganda</li>
-          <li>Maintain and improve the operation of this website</li>
-          <li>Consider your application if you have submitted a CV or career enquiry</li>
-        </ul>
-        <p>We do not sell, rent, or trade your personal information to third parties for marketing purposes.</p>
-
-        <h3>Legal Basis for Processing</h3>
-        <p>We process your personal information on one or more of the following grounds: to perform our contractual obligations to you; to comply with legal and regulatory requirements applicable to a law firm practising in Uganda; to pursue our legitimate interests in delivering legal services; or, where required, with your express consent.</p>
-
-        <h3>Sharing of Information</h3>
-        <p>We may share your personal information with:</p>
-        <ul>
-          <li>Professional advisers, co-counsel, or experts engaged on your matter with your authority</li>
-          <li>Courts, tribunals, arbitral institutions, or regulatory bodies as required by law or by the conduct of proceedings</li>
-          <li>Our technology and hosting service providers, who are bound by confidentiality and data security obligations</li>
-        </ul>
-        <p>All third parties with whom we share data are required to maintain appropriate standards of confidentiality and security consistent with those we apply ourselves.</p>
-
-        <h3>Retention</h3>
-        <p>We retain personal information for as long as is necessary for the purpose for which it was collected, or as required by applicable law or professional regulation. Client matter files are typically retained for a minimum of seven years following the conclusion of a matter, in accordance with standard legal professional practice in Uganda.</p>
-
-        <h3>Your Rights</h3>
-        <p>Subject to applicable law, you have the right to request access to, correction of, or deletion of personal information we hold about you. You may also object to certain processing or withdraw consent where processing is based on consent alone. To exercise any of these rights, contact us using the details below.</p>
-
-        <h3>Security</h3>
-        <p>We implement appropriate technical and organisational measures to protect your personal information against unauthorised access, alteration, disclosure, or destruction. However, no method of transmission over the internet is entirely secure, and we cannot guarantee absolute security of data transmitted to us electronically.</p>
-
-        <h3>Third-Party Links</h3>
-        <p>This website may contain links to third-party websites. We are not responsible for the privacy practices of those sites and encourage you to review their privacy notices before providing any personal information.</p>
-
-        <h3>Changes to This Policy</h3>
-        <p>We may update this Privacy Policy from time to time. The current version will always be available on this page, with the date of last revision noted above. Continued use of this website after any update constitutes acceptance of the revised policy.</p>
-
-        <div class="legal-contact-card">
-          <p><strong>Questions about your data?</strong><br>Contact our practice manager at <a href="/cdn-cgi/l/email-protection#99f0f7fff6d9f4f0f5edf6f7f8fdeff6faf8edfceab7faf6f4" style="color:var(--cyan);border-color:rgba(0,231,255,0.3);"><span class="__cf_email__" data-cfemail="a2cbccc4cde2cfcbced6cdccc3c6d4cdc1c3d6c7d18cc1cdcf">[email&#160;protected]</span></a> or write to us at Nakawa Business Park, Nakawa House, 3rd Floor, Kampala, Uganda.</p>
-          <a href="contact.html" class="btn btn-cyan">Contact Us &rarr;</a>
+        <div class="practice-card" onclick="openModal('arbitration')">
+          <div class="practice-card-icon"><img src="assets/svgs/arbitration.svg" alt="Arbitration"/></div>
+          <h3>Arbitration &amp; ADR</h3>
+          <p>Extensive experience in domestic and international arbitration — ICC, LCIA, UNCITRAL, CADER and institutional frameworks — acting as counsel and arbitrator.</p>
+          <span class="practice-card-link">Learn More &#x2192;</span>
+        </div>
+        <div class="practice-card" onclick="openModal('commercial')">
+          <div class="practice-card-icon"><img src="assets/svgs/commercial-transactions.svg" alt="Commercial Transactions"/></div>
+          <h3>Commercial Transactions</h3>
+          <p>Practical, business-focused legal solutions — contract drafting and negotiation, M&amp;A, corporate governance, regulatory compliance and project finance.</p>
+          <span class="practice-card-link">Learn More &#x2192;</span>
+        </div>
+        <div class="practice-card" onclick="openModal('litigation')">
+          <div class="practice-card-icon"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div>
+          <h3>Litigation</h3>
+          <p>Strategic advocacy combined with rigorous legal analysis for complex commercial, construction and corporate disputes before Uganda's courts.</p>
+          <span class="practice-card-link">Learn More &#x2192;</span>
+        </div>
+        <div class="practice-card" onclick="openModal('corporate')">
+          <div class="practice-card-icon"><img src="assets/svgs/corporate-law.svg" alt="Corporate &amp; Commercial Law"/></div>
+          <h3>Corporate &amp; Commercial Law</h3>
+          <p>Comprehensive corporate legal services — company formation, shareholders agreements, mergers, acquisitions, joint ventures and corporate restructuring.</p>
+          <span class="practice-card-link">Learn More &#x2192;</span>
+        </div>
+        <div class="practice-card" onclick="openModal('energy')">
+          <div class="practice-card-icon"><img src="assets/svgs/energy-law.svg" alt="Energy Law"/></div>
+          <h3>Energy Law</h3>
+          <p>Legal advice for energy sector projects — licensing, regulatory compliance, PPP and EPC structures, and dispute resolution for power and renewables projects.</p>
+          <span class="practice-card-link">Learn More &#x2192;</span>
+        </div>
+        <div class="practice-card" onclick="openModal('technology')">
+          <div class="practice-card-icon"><img src="assets/svgs/technology-law.svg" alt="Technology Law"/></div>
+          <h3>Technology Law</h3>
+          <p>Legal support for digital business — technology contracts, data protection, intellectual property, e-commerce and regulatory compliance in the technology sector.</p>
+          <span class="practice-card-link">Learn More &#x2192;</span>
+        </div>
+        <div class="practice-card" onclick="openModal('tax')">
+          <div class="practice-card-icon"><img src="assets/svgs/tax-law.svg" alt="Tax Law"/></div>
+          <h3>Tax Law</h3>
+          <p>Strategic tax advisory and dispute resolution — tax planning, compliance, Uganda Revenue Authority engagements, and tax litigation for businesses and individuals.</p>
+          <span class="practice-card-link">Learn More &#x2192;</span>
+        </div>
+        <div class="practice-card" onclick="openModal('publicinterest')">
+          <div class="practice-card-icon"><img src="assets/svgs/public-interest.svg" alt="Public Interest Litigation"/></div>
+          <h3>Public Interest Litigation</h3>
+          <p>Advocacy for social justice — pro bono litigation, human rights matters, access to justice initiatives, and community legal empowerment programmes.</p>
+          <span class="practice-card-link">Learn More &#x2192;</span>
         </div>
       </div>
-    </section>
+      <div class="practice-list">
+        <div class="practice-list-item" onclick="openModal('construction')"><div class="practice-list-icon"><img src="assets/svgs/construction-law.svg" alt=""/></div><div class="practice-list-text"><h3>Construction Law</h3><p>From procurement through dispute resolution.</p></div><span class="practice-list-arrow">&#x203A;</span></div>
+        <div class="practice-list-item" onclick="openModal('arbitration')"><div class="practice-list-icon"><img src="assets/svgs/arbitration.svg" alt=""/></div><div class="practice-list-text"><h3>Arbitration</h3><p>Domestic and international proceedings.</p></div><span class="practice-list-arrow">&#x203A;</span></div>
+        <div class="practice-list-item" onclick="openModal('commercial')"><div class="practice-list-icon"><img src="assets/svgs/commercial-transactions.svg" alt=""/></div><div class="practice-list-text"><h3>Commercial Transactions</h3><p>Practical legal solutions for business.</p></div><span class="practice-list-arrow">&#x203A;</span></div>
+        <div class="practice-list-item" onclick="openModal('litigation')"><div class="practice-list-icon"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div><div class="practice-list-text"><h3>Litigation</h3><p>Strategic advocacy for complex disputes.</p></div><span class="practice-list-arrow">&#x203A;</span></div>
+      </div>
+    </div>
+  </section>
 
-    <div class="legal-sep"></div>
-
-    <!-- TERMS OF USE -->
-    <section class="legal-section scroll-reveal" id="terms">
-      <div class="legal-section-header">
-        <div class="legal-section-badge">
-          <div class="legal-section-badge-dot"></div>
-          <span>Terms of Use</span>
+  <section class="team-section" id="team">
+    <div class="container">
+      <div class="team-header">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Leadership</span></div>
+        <h2>Meet Our Senior Partner &amp; CEO</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card" onclick="openAttorneyModal()">
+          <div class="team-card-image">
+            <img src="assets/images/attorney.jpg" alt="Milton Ocen"/>
+            <div class="team-card-overlay"><span class="read-more">Read Full Profile &#x2192;</span></div>
+          </div>
+          <div class="team-card-info">
+            <div class="team-card-name">Milton Ocen</div>
+            <div class="team-card-role">Senior Partner &amp; CEO</div>
+          </div>
+          <div class="team-card-credentials">MSc Construction Law &amp; Dispute Resolution, British University in Dubai &middot; LLB (MUK) &middot; Dip LP(LDC) &middot; MCIArb</div>
         </div>
-        <h2>Website Terms &amp; Conditions</h2>
-        <p class="legal-section-meta">Last updated: January 2025</p>
-        <div class="legal-divider"></div>
-      </div>
-      <div class="legal-content">
-        <h3>Acceptance</h3>
-        <p>By accessing and using this website (<a href="https://www.miltonadvocates.com">www.miltonadvocates.com</a>), you agree to be bound by these Terms of Use. If you do not agree, please discontinue use of this website immediately. We reserve the right to amend these terms at any time; the current version will always be posted on this page.</p>
-
-        <h3>Nature of This Website</h3>
-        <p>This website is operated by Milton Advocates, a law firm registered and practising in Uganda. The content on this website is provided for general informational purposes only. Nothing on this website constitutes legal advice, creates a lawyer-client relationship, or should be relied upon as a substitute for professional legal counsel tailored to your specific circumstances.</p>
-
-        <h3>Intellectual Property</h3>
-        <p>All content on this website — including text, graphics, logos, icons, images, and page layouts — is the property of Milton Advocates or its content suppliers and is protected by applicable copyright and intellectual property laws. You may not reproduce, distribute, modify, or republish any content from this website without our prior written consent, except for your own personal, non-commercial reference use.</p>
-
-        <h3>Permitted Use</h3>
-        <p>You may access and use this website for lawful purposes only. You must not:</p>
-        <ul>
-          <li>Use this website in any way that violates applicable Ugandan or international law or regulation</li>
-          <li>Transmit any unsolicited commercial communications through or in connection with this website</li>
-          <li>Attempt to gain unauthorised access to any part of this website or its underlying systems</li>
-          <li>Introduce viruses, malware, or other harmful code to this website</li>
-          <li>Scrape, data-mine, or systematically extract content from this website without our consent</li>
-        </ul>
-
-        <h3>No Lawyer-Client Relationship</h3>
-        <p>Use of this website, submission of an enquiry form, or any other interaction with this website does not create a lawyer-client relationship between you and Milton Advocates. A lawyer-client relationship is only established upon the execution of a formal engagement letter signed by a partner of the firm.</p>
-
-        <h3>Availability</h3>
-        <p>We aim to keep this website available at all times but do not guarantee uninterrupted access. We may suspend, withdraw, or restrict availability of the website at any time without notice for operational or business reasons.</p>
-
-        <h3>Governing Law</h3>
-        <p>These Terms of Use are governed by and construed in accordance with the laws of Uganda. Any disputes arising in connection with these terms shall be subject to the exclusive jurisdiction of the courts of Uganda.</p>
-
-        <h3>Contact</h3>
-        <p>For any questions relating to these Terms of Use, please contact us at <a href="/cdn-cgi/l/email-protection#92fbfcf4fdd2fffbfee6fdfcf3f6e4fdf1f3e6f7e1bcf1fdff"><span class="__cf_email__" data-cfemail="523b3c343d123f3b3e263d3c3336243d31332637217c313d3f">[email&#160;protected]</span></a>.</p>
-      </div>
-    </section>
-
-    <div class="legal-sep"></div>
-
-    <!-- DISCLAIMER -->
-    <section class="legal-section scroll-reveal" id="disclaimer">
-      <div class="legal-section-header">
-        <div class="legal-section-badge">
-          <div class="legal-section-badge-dot"></div>
-          <span>Disclaimer</span>
-        </div>
-        <h2>Legal Disclaimer</h2>
-        <p class="legal-section-meta">Last updated: January 2025</p>
-        <div class="legal-divider"></div>
-      </div>
-      <div class="legal-content">
-        <h3>General</h3>
-        <p>Milton Advocates makes no representations or warranties of any kind, express or implied, as to the completeness, accuracy, reliability, suitability, or availability of the information, services, or related materials on this website. Any reliance you place on such information is strictly at your own risk.</p>
-
-        <h3>Not Legal Advice</h3>
-        <p>The content published on this website — including articles, case summaries, commentary, practice area descriptions, and any other materials — is provided for general informational and educational purposes only. It does not constitute legal advice and must not be treated as such. Laws, regulations, and their interpretation change frequently; the accuracy of any content is not guaranteed beyond the date of publication.</p>
-        <p>You should always seek independent legal advice from a qualified advocate before taking or refraining from any action on the basis of information found on this website.</p>
-
-        <h3>No Guarantee of Outcome</h3>
-        <p>Past results achieved by Milton Advocates on behalf of clients are described on this website for illustrative purposes only. They do not constitute a guarantee, warranty, or prediction that a similar outcome will be achieved in any future matter. Each legal matter is unique and depends on its own specific facts and circumstances.</p>
-
-        <h3>Third-Party Content</h3>
-        <p>Where this website references or links to third-party sources, legislation, case law, or external websites, such references are provided for convenience only. Milton Advocates does not endorse, control, or accept responsibility for the content of any third-party source and cannot guarantee its accuracy or currency.</p>
-
-        <h3>Regulatory Status</h3>
-        <p>Milton Advocates is a law firm duly registered and regulated in Uganda. The firm and its advocates are subject to the professional conduct rules of the Uganda Law Society and the relevant provisions of the Advocates Act (Cap. 267). Interactions with this website from jurisdictions outside Uganda are subject to local laws and regulations, which may restrict the information that can lawfully be provided. Nothing on this website constitutes an offer to provide legal services in any jurisdiction in which we are not licensed or authorised to do so.</p>
-
-        <h3>Limitation of Liability</h3>
-        <p>To the fullest extent permitted by applicable law, Milton Advocates, its partners, associates, and staff exclude all liability for any loss or damage of any nature arising from your use of, or inability to use, this website or any content on it, including but not limited to direct, indirect, incidental, consequential, or punitive losses, even if we have been advised of the possibility of such losses.</p>
-
-        <div class="legal-contact-card">
-          <p><strong>Questions or concerns?</strong><br>We take our professional obligations seriously. If you have any concerns about the content of this website, we welcome your contact.</p>
-          <a href="contact.html" class="btn btn-cyan">Get in Touch &rarr;</a>
+        <div class="team-quote-card">
+          <div class="quote-watermark" aria-hidden="true"><svg viewBox="0 0 102 104" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M51,3C27.15,3,7.23,20.12,2.88,42.72h1.52C8.73,20.95,27.97,4.49,51,4.49s42.26,16.46,46.6,38.23h1.52C94.77,20.12,74.85,3,51,3Z"/><path fill="#fff" d="M97.52,61.69c-4.49,21.57-23.63,37.82-46.51,37.82S8.97,83.26,4.48,61.69h-1.52c4.5,22.39,24.33,39.31,48.04,39.31s43.53-16.92,48.03-39.31h-1.52Z"/><rect fill="#fff" x="29.1" y="37.66" width="42.89" height="2.04" rx=".35" ry=".35"/><path fill="#fff" d="M27.96,66.15v1.34c0,.19,.16,.35,.37,.35h44.43c.2,0,.37-.16,.37-.35v-1.34c0-.19-.16-.35-.37-.35H28.33c-.2,0-.37,.16-.37,.35Z"/><path fill="#fff" d="M27.26,67.74v.81c0,.12,.17,.21,.38,.21h45.81c.21,0,.38-.09,.38-.21v-.81c0-.12-.17-.21-.38-.21H27.64c-.21,0-.38,.09-.38,.21Z"/><path fill="#fff" d="M28.6,35.17l20.77-6.14s.04-.01,.05-.02c.2-.07,1.58-.54,3.05,0,1.47,.55,17.65,5.44,20.06,6.17,.24,.07,.44,.25,.53,.49,.14,.36,.12,.83-.93,.89-1.69,.1-41.3,0-42.6,0-1.03,0-1.62-.25-1.51-.81,.06-.28,.29-.5,.57-.58Z"/><path fill="#fff" d="M71.49,42.12H29.34c-1.09,0-.77-1.39-.77-1.39l.06-.2h43.56l.06,.2s.33,1.39-.77,1.39Z"/><path fill="#fff" d="M73.56,71.44H27.28c-1.2,0-.84-1.69-.84-1.69l.07-.24h47.83l.06,.24s.36,1.69-.84,1.69Z"/></svg></div>
+          <div class="team-quote-mark">&ldquo;</div>
+          <p class="team-quote-text">Building trust and resolving disputes with precision in construction law.</p>
+          <div class="team-quote-divider"></div>
+          <div class="team-quote-meta">
+            <span class="team-quote-name">Milton F. Ocen</span>
+            <span class="team-quote-role">Senior Partner &amp; CEO, Milton Advocates</span>
+          </div>
+          <a href="contact.html" class="btn team-quote-btn">Get In Touch</a>
         </div>
       </div>
-    </section>
 
-    <div style="height:40px;"></div>
-  </div>
+      <!-- EXPANDING TEAM SECTION -->
+      <div class="team-expand-bar" id="teamExpandBar" onclick="toggleTeamExpand()">
+        <span>Meet the Full Team</span>
+        <div class="team-expand-arrow" id="teamExpandArrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="team-expand-panel" id="teamExpandPanel">
+        <div class="team-members-grid">
 
-<footer id="site-footer">
+          <div class="team-member-card scroll-reveal">
+            <div style="background:linear-gradient(135deg,var(--navy),var(--navy-mid));display:flex;align-items:center;justify-content:center;height:240px;flex-shrink:0;">
+              <span style="font-family:'Playfair Display',serif;font-size:52px;color:var(--cyan);font-weight:700;">SS</span>
+            </div>
+            <div style="padding:24px 20px 20px;">
+              <div class="team-card-name" style="font-size:18px;">Ssenyonga Simon</div>
+              <div class="team-card-role" style="font-size:12px;color:var(--blue);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;">Associate Partner</div>
+            </div>
+          </div>
+
+          <div class="team-member-card scroll-reveal">
+            <div style="background:linear-gradient(135deg,var(--navy),var(--navy-mid));display:flex;align-items:center;justify-content:center;height:240px;flex-shrink:0;">
+              <span style="font-family:'Playfair Display',serif;font-size:52px;color:var(--cyan);font-weight:700;">LS</span>
+            </div>
+            <div style="padding:24px 20px 20px;">
+              <div class="team-card-name" style="font-size:18px;">Lucy Suky</div>
+              <div class="team-card-role" style="font-size:12px;color:var(--blue);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;">Principal Associate</div>
+            </div>
+          </div>
+
+          <div class="team-member-card scroll-reveal">
+            <div style="background:linear-gradient(135deg,var(--navy),var(--navy-mid));display:flex;align-items:center;justify-content:center;height:240px;flex-shrink:0;">
+              <span style="font-family:'Playfair Display',serif;font-size:52px;color:var(--cyan);font-weight:700;">ID</span>
+            </div>
+            <div style="padding:24px 20px 20px;">
+              <div class="team-card-name" style="font-size:18px;">Isingoma Derrick</div>
+              <div class="team-card-role" style="font-size:12px;color:var(--blue);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;">Associate</div>
+            </div>
+          </div>
+
+          <div class="team-member-card scroll-reveal">
+            <div style="background:linear-gradient(135deg,var(--navy),var(--navy-mid));display:flex;align-items:center;justify-content:center;height:240px;flex-shrink:0;">
+              <span style="font-family:'Playfair Display',serif;font-size:52px;color:var(--cyan);font-weight:700;">BS</span>
+            </div>
+            <div style="padding:24px 20px 20px;">
+              <div class="team-card-name" style="font-size:18px;">Brian Ssenabulya</div>
+              <div class="team-card-role" style="font-size:12px;color:var(--blue);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;">Associate</div>
+            </div>
+          </div>
+
+        </div>
+        <div style="text-align:center;margin-top:36px;">
+          <a href="careers.html" class="btn btn-primary">View Careers Page</a>
+        </div>
+      </div>
+  </section>
+
+  <!-- SOCIAL FEED -->
+  <section class="social-section" id="social">
+    <div class="container">
+      <div class="section-eyebrow">
+        <div class="section-eyebrow-line"></div>
+        <span>Public Engagements</span>
+      </div>
+      <h2>Follow Our Work</h2>
+      <p class="social-section-sub">Milton Advocates participates in public legal discourse, arbitration forums and community initiatives. Follow us on social media for the latest.</p>
+      <div class="social-feeds-grid">
+
+        <!-- X / Twitter Feed -->
+        <div class="social-feed-card">
+          <div class="social-feed-header">
+            <div class="social-feed-icon x-icon">
+              <svg viewBox="0 0 102 104" fill="#fff"><path d="M78.36,20.78h10.81l-23.6,26.97,27.77,36.71h-21.73l-17.03-22.26-19.47,22.26h-10.82l25.24-28.85L22.89,20.78h22.29l15.38,20.34,17.8-20.34h0Zm-3.79,57.22h5.98L41.91,26.9h-6.43l39.08,51.09h0Z"/></svg>
+            </div>
+            <div>
+              <div class="social-feed-name">Milton Advocates</div>
+              <div class="social-feed-handle">@miltonadvocates</div>
+            </div>
+            <a href="https://x.com/miltonadvocates" target="_blank" class="social-feed-follow">Follow</a>
+          </div>
+          <div class="social-feed-posts">
+            <div class="social-post">
+              <p>Proud to have participated in the <strong>CADER Annual Arbitration Conference</strong> — a vital forum for shaping Uganda&rsquo;s ADR landscape. Key takeaways on infrastructure disputes shared below. <span class="social-post-tag">#Arbitration #Uganda</span></p>
+              <div class="social-post-meta"><span>2 days ago</span><span class="social-post-actions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> 14</span></div>
+            </div>
+            <div class="social-post">
+              <p>Milton Advocates advising on a landmark <strong>PPP infrastructure project</strong> in East Africa. We are committed to transparent, legally sound project delivery. <span class="social-post-tag">#ConstructionLaw #PPP</span></p>
+              <div class="social-post-meta"><span>5 days ago</span><span class="social-post-actions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> 31</span></div>
+            </div>
+            <div class="social-post">
+              <p>The firm is <strong>hiring</strong> — we are looking for passionate legal minds to join our growing practice. Visit our careers page for open positions. <span class="social-post-tag">#LegalCareers #Kampala</span></p>
+              <div class="social-post-meta"><span>1 week ago</span><span class="social-post-actions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> 58</span></div>
+            </div>
+          </div>
+          <a href="https://x.com/miltonadvocates" target="_blank" class="social-feed-more">View all posts &#x2192;</a>
+        </div>
+
+        <!-- Facebook Feed -->
+        <div class="social-feed-card">
+          <div class="social-feed-header">
+            <div class="social-feed-icon fb-icon">
+              <svg viewBox="0 0 102 104" fill="#fff"><path d="M92.63,52.86c0,20.62-15.13,37.72-34.88,40.82v-28.8h9.6l1.83-11.91h-11.43v-7.73c0-3.26,1.6-6.44,6.71-6.44h5.2v-10.14s-4.72-.81-9.22-.81c-9.41,0-15.56,5.71-15.56,16.03v9.08h-10.46v11.91h10.46v28.8c-19.75-3.11-34.88-20.2-34.88-40.82C9.99,30.05,28.49,11.55,51.31,11.55s41.32,18.5,41.32,41.32Z"/></svg>
+            </div>
+            <div>
+              <div class="social-feed-name">Milton Advocates</div>
+              <div class="social-feed-handle">miltonadvocates</div>
+            </div>
+            <a href="https://facebook.com/miltonadvocates" target="_blank" class="social-feed-follow">Like Page</a>
+          </div>
+          <div class="social-feed-posts">
+            <div class="social-post">
+              <p>We were honoured to host a <strong>public workshop on FIDIC contract administration</strong> for contractors, engineers and project managers in Kampala. Thank you to all who attended.</p>
+              <div class="social-post-img-placeholder"></div>
+              <div class="social-post-meta"><span>3 days ago</span><span class="social-post-actions">&#x1F44D; 47 &nbsp; &#x1F4AC; 6</span></div>
+            </div>
+            <div class="social-post">
+              <p>Our senior partner Milton F. Ocen delivered a keynote on <strong>construction dispute trends in East Africa</strong> at the Uganda Law Society Annual Conference.</p>
+              <div class="social-post-meta"><span>2 weeks ago</span><span class="social-post-actions">&#x1F44D; 103 &nbsp; &#x1F4AC; 12</span></div>
+            </div>
+          </div>
+          <a href="https://facebook.com/miltonadvocates" target="_blank" class="social-feed-more">View all posts &#x2192;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer id="site-footer">
     <div class="bg-graphic"></div>
   <div class="footer-watermark footer-watermark-1" aria-hidden="true"><svg viewBox="0 0 102 104" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M51,3C27.15,3,7.23,20.12,2.88,42.72h1.52C8.73,20.95,27.97,4.49,51,4.49s42.26,16.46,46.6,38.23h1.52C94.77,20.12,74.85,3,51,3Z"/><path fill="#fff" d="M97.52,61.69c-4.49,21.57-23.63,37.82-46.51,37.82S8.97,83.26,4.48,61.69h-1.52c4.5,22.39,24.33,39.31,48.04,39.31s43.53-16.92,48.03-39.31h-1.52Z"/><rect fill="#fff" x="29.1" y="37.66" width="42.89" height="2.04" rx=".35" ry=".35"/><path fill="#fff" d="M27.96,66.15v1.34c0,.19,.16,.35,.37,.35h44.43c.2,0,.37-.16,.37-.35v-1.34c0-.19-.16-.35-.37-.35H28.33c-.2,0-.37,.16-.37,.35Z"/><path fill="#fff" d="M27.26,67.74v.81c0,.12,.17,.21,.38,.21h45.81c.21,0,.38-.09,.38-.21v-.81c0-.12-.17-.21-.38-.21H27.64c-.21,0-.38,.09-.38,.21Z"/><path fill="#fff" d="M28.6,35.17l20.77-6.14s.04-.01,.05-.02c.2-.07,1.58-.54,3.05,0,1.47,.55,17.65,5.44,20.06,6.17,.24,.07,.44,.25,.53,.49,.14,.36,.12,.83-.93,.89-1.69,.1-41.3,0-42.6,0-1.03,0-1.62-.25-1.51-.81,.06-.28,.29-.5,.57-.58Z"/><path fill="#fff" d="M71.49,42.12H29.34c-1.09,0-.77-1.39-.77-1.39l.06-.2h43.56l.06,.2s.33,1.39-.77,1.39Z"/><path fill="#fff" d="M73.56,71.44H27.28c-1.2,0-.84-1.69-.84-1.69l.07-.24h47.83l.06,.24s.36,1.69-.84,1.69Z"/></svg></div>
   <div class="footer-watermark footer-watermark-2" aria-hidden="true"><svg viewBox="0 0 102 104" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M51,3C27.15,3,7.23,20.12,2.88,42.72h1.52C8.73,20.95,27.97,4.49,51,4.49s42.26,16.46,46.6,38.23h1.52C94.77,20.12,74.85,3,51,3Z"/><path fill="#fff" d="M97.52,61.69c-4.49,21.57-23.63,37.82-46.51,37.82S8.97,83.26,4.48,61.69h-1.52c4.5,22.39,24.33,39.31,48.04,39.31s43.53-16.92,48.03-39.31h-1.52Z"/><rect fill="#fff" x="29.1" y="37.66" width="42.89" height="2.04" rx=".35" ry=".35"/><path fill="#fff" d="M27.96,66.15v1.34c0,.19,.16,.35,.37,.35h44.43c.2,0,.37-.16,.37-.35v-1.34c0-.19-.16-.35-.37-.35H28.33c-.2,0-.37,.16-.37,.35Z"/><path fill="#fff" d="M27.26,67.74v.81c0,.12,.17,.21,.38,.21h45.81c.21,0,.38-.09,.38-.21v-.81c0-.12-.17-.21-.38-.21H27.64c-.21,0-.38,.09-.38,.21Z"/><path fill="#fff" d="M28.6,35.17l20.77-6.14s.04-.01,.05-.02c.2-.07,1.58-.54,3.05,0,1.47,.55,17.65,5.44,20.06,6.17,.24,.07,.44,.25,.53,.49,.14,.36,.12,.83-.93,.89-1.69,.1-41.3,0-42.6,0-1.03,0-1.62-.25-1.51-.81,.06-.28,.29-.5,.57-.58Z"/><path fill="#fff" d="M71.49,42.12H29.34c-1.09,0-.77-1.39-.77-1.39l.06-.2h43.56l.06,.2s.33,1.39-.77,1.39Z"/><path fill="#fff" d="M73.56,71.44H27.28c-1.2,0-.84-1.69-.84-1.69l.07-.24h47.83l.06,.24s.36,1.69-.84,1.69Z"/></svg></div>
@@ -494,7 +478,7 @@
         <div class="modal-header">
           <div>
             <h2>Milton Ocen</h2>
-            <div class="attorney-role">Senior Partner</div>
+            <div class="attorney-role">Senior Partner &amp; CEO</div>
           </div>
         </div>
         <p class="attorney-credentials">MSc Construction Law &amp; Dispute Resolution, British University in Dubai &middot; LLB (MUK) &middot; Dip LP(LDC) &middot; MCIArb &middot; LCIA Member</p>
@@ -622,32 +606,138 @@
     </div>
   </div>
 
-
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/script.js"></script>
-  <script>
-    // Tab active state on click
-    function setActive(el) {
-      document.querySelectorAll('.legal-tab').forEach(t => t.classList.remove('active'));
-      el.classList.add('active');
-    }
-    // Update active tab on scroll
-    (function() {
-      var sections = ['privacy','terms','disclaimer'];
-      var tabs = document.querySelectorAll('.legal-tab');
-      function onScroll() {
-        var scrollY = window.scrollY + 160;
-        var active = 'privacy';
-        sections.forEach(function(id) {
-          var el = document.getElementById(id);
-          if (el && el.offsetTop <= scrollY) active = id;
-        });
-        tabs.forEach(function(t) {
-          t.classList.toggle('active', t.getAttribute('href') === '#' + active);
-        });
-      }
-      window.addEventListener('scroll', onScroll, {passive:true});
-    })();
-  </script>
+  <script src="assets/script.js"></script>
 </body>
+</html
+
+  <!-- Corporate & Commercial Law Modal -->
+  <div class="modal-overlay" id="modal-corporate" role="dialog" aria-modal="true" aria-labelledby="modal-corporate-title">
+    <div class="modal">
+      <div class="modal-image">
+        <img src="assets/images/commercial-2.jpg" alt="Corporate &amp; Commercial Law"/>
+        <div class="modal-cyan-bar"></div>
+        <button class="modal-close" onclick="closeModal('corporate')" aria-label="Close">&#x2715;</button>
+      </div>
+      <div class="modal-content">
+        <div class="modal-header"><div><h2 id="modal-corporate-title">Corporate &amp; Commercial Law</h2></div><div class="modal-header-icon"><img src="assets/svgs/corporate-law.svg" alt=""/></div></div>
+        <a href="contact.html" class="btn btn-primary modal-contact-btn">Contact Us</a>
+        <div class="modal-divider"></div>
+        <div class="modal-body">
+          <p>Our corporate and commercial practice provides comprehensive legal support across the business lifecycle — from incorporation through to exit.</p>
+          <ul><li>Company formation, structuring and corporate secretarial</li><li>Mergers, acquisitions and joint ventures</li><li>Shareholders agreements and corporate governance</li><li>Commercial contract drafting and negotiation</li><li>Regulatory compliance and licensing</li><li>Corporate restructuring and insolvency advisory</li></ul>
+        </div>
+        <div class="modal-divider"></div>
+        <div class="modal-related">
+          <div class="modal-related-icon" onclick="switchModal('corporate','construction')"><img src="assets/svgs/construction-law.svg" alt="Construction"/></div>
+          <div class="modal-related-icon" onclick="switchModal('corporate','arbitration')"><img src="assets/svgs/arbitration.svg" alt="Arbitration"/></div>
+          <div class="modal-related-icon" onclick="switchModal('corporate','litigation')"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Energy Law Modal -->
+  <div class="modal-overlay" id="modal-energy" role="dialog" aria-modal="true" aria-labelledby="modal-energy-title">
+    <div class="modal">
+      <div class="modal-image">
+        <img src="assets/images/construction-2.jpg" alt="Energy Law"/>
+        <div class="modal-cyan-bar"></div>
+        <button class="modal-close" onclick="closeModal('energy')" aria-label="Close">&#x2715;</button>
+      </div>
+      <div class="modal-content">
+        <div class="modal-header"><div><h2 id="modal-energy-title">Energy Law</h2></div><div class="modal-header-icon"><img src="assets/svgs/energy-law.svg" alt=""/></div></div>
+        <a href="contact.html" class="btn btn-primary modal-contact-btn">Contact Us</a>
+        <div class="modal-divider"></div>
+        <div class="modal-body">
+          <p>We provide specialised legal advice to developers, contractors, investors and government entities across Uganda's energy sector.</p>
+          <ul><li>Energy sector licensing and regulatory compliance</li><li>PPP, EPC and BOOT project structures</li><li>Power purchase agreements and offtake contracts</li><li>Renewables and alternative energy projects</li><li>Energy project finance and security arrangements</li><li>Dispute resolution for energy projects</li></ul>
+        </div>
+        <div class="modal-divider"></div>
+        <div class="modal-related">
+          <div class="modal-related-icon" onclick="switchModal('energy','construction')"><img src="assets/svgs/construction-law.svg" alt="Construction"/></div>
+          <div class="modal-related-icon" onclick="switchModal('energy','arbitration')"><img src="assets/svgs/arbitration.svg" alt="Arbitration"/></div>
+          <div class="modal-related-icon" onclick="switchModal('energy','commercial')"><img src="assets/svgs/commercial-transactions.svg" alt="Commercial"/></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Technology Law Modal -->
+  <div class="modal-overlay" id="modal-technology" role="dialog" aria-modal="true" aria-labelledby="modal-technology-title">
+    <div class="modal">
+      <div class="modal-image">
+        <img src="assets/images/arbitration-2.jpg" alt="Technology Law"/>
+        <div class="modal-cyan-bar"></div>
+        <button class="modal-close" onclick="closeModal('technology')" aria-label="Close">&#x2715;</button>
+      </div>
+      <div class="modal-content">
+        <div class="modal-header"><div><h2 id="modal-technology-title">Technology Law</h2></div><div class="modal-header-icon"><img src="assets/svgs/technology-law.svg" alt=""/></div></div>
+        <a href="contact.html" class="btn btn-primary modal-contact-btn">Contact Us</a>
+        <div class="modal-divider"></div>
+        <div class="modal-body">
+          <p>Forward-looking legal advice to technology companies, startups, and established businesses navigating Uganda's evolving digital regulatory landscape.</p>
+          <ul><li>Technology and software contracts</li><li>Data protection and privacy compliance</li><li>Intellectual property — patents, trademarks and copyright</li><li>E-commerce and digital platform regulation</li><li>Cybersecurity and digital risk advisory</li><li>Fintech and mobile money regulatory compliance</li></ul>
+        </div>
+        <div class="modal-divider"></div>
+        <div class="modal-related">
+          <div class="modal-related-icon" onclick="switchModal('technology','corporate')"><img src="assets/svgs/corporate-law.svg" alt="Corporate"/></div>
+          <div class="modal-related-icon" onclick="switchModal('technology','commercial')"><img src="assets/svgs/commercial-transactions.svg" alt="Commercial"/></div>
+          <div class="modal-related-icon" onclick="switchModal('technology','litigation')"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tax Law Modal -->
+  <div class="modal-overlay" id="modal-tax" role="dialog" aria-modal="true" aria-labelledby="modal-tax-title">
+    <div class="modal">
+      <div class="modal-image">
+        <img src="assets/images/commercial-2.jpg" alt="Tax Law"/>
+        <div class="modal-cyan-bar"></div>
+        <button class="modal-close" onclick="closeModal('tax')" aria-label="Close">&#x2715;</button>
+      </div>
+      <div class="modal-content">
+        <div class="modal-header"><div><h2 id="modal-tax-title">Tax Law</h2></div><div class="modal-header-icon"><img src="assets/svgs/tax-law.svg" alt=""/></div></div>
+        <a href="contact.html" class="btn btn-primary modal-contact-btn">Contact Us</a>
+        <div class="modal-divider"></div>
+        <div class="modal-body">
+          <p>Strategic tax advice and representation to businesses, investors and individuals — helping clients plan efficiently and defend positions before the Uganda Revenue Authority.</p>
+          <ul><li>Corporate and individual tax planning and advisory</li><li>Tax compliance and statutory filings</li><li>Uganda Revenue Authority engagements and objections</li><li>Tax appeals and dispute resolution</li><li>Transfer pricing and international tax matters</li><li>VAT, income tax, withholding tax and stamp duty advice</li></ul>
+        </div>
+        <div class="modal-divider"></div>
+        <div class="modal-related">
+          <div class="modal-related-icon" onclick="switchModal('tax','corporate')"><img src="assets/svgs/corporate-law.svg" alt="Corporate"/></div>
+          <div class="modal-related-icon" onclick="switchModal('tax','commercial')"><img src="assets/svgs/commercial-transactions.svg" alt="Commercial"/></div>
+          <div class="modal-related-icon" onclick="switchModal('tax','litigation')"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Public Interest Litigation Modal -->
+  <div class="modal-overlay" id="modal-publicinterest" role="dialog" aria-modal="true" aria-labelledby="modal-publicinterest-title">
+    <div class="modal">
+      <div class="modal-image">
+        <img src="assets/images/litigation-2.jpg" alt="Public Interest Litigation"/>
+        <div class="modal-cyan-bar"></div>
+        <button class="modal-close" onclick="closeModal('publicinterest')" aria-label="Close">&#x2715;</button>
+      </div>
+      <div class="modal-content">
+        <div class="modal-header"><div><h2 id="modal-publicinterest-title">Public Interest Litigation</h2></div><div class="modal-header-icon"><img src="assets/svgs/public-interest.svg" alt=""/></div></div>
+        <a href="contact.html" class="btn btn-primary modal-contact-btn">Contact Us</a>
+        <div class="modal-divider"></div>
+        <div class="modal-body">
+          <p>Our commitment to the rule of law extends beyond commercial practice. We advocate for social justice, human rights, and community empowerment in Uganda.</p>
+          <ul><li>Pro bono legal representation for individuals and communities</li><li>Human rights litigation and constitutional petitions</li><li>Environmental and land rights advocacy</li><li>Community legal awareness and education</li><li>Legal mentorship for young advocates</li><li>Collaboration with NGOs and civil society organisations</li></ul>
+        </div>
+        <div class="modal-divider"></div>
+        <div class="modal-related">
+          <div class="modal-related-icon" onclick="switchModal('publicinterest','litigation')"><img src="assets/svgs/litigation-icon.svg" alt="Litigation"/></div>
+          <div class="modal-related-icon" onclick="switchModal('publicinterest','arbitration')"><img src="assets/svgs/arbitration.svg" alt="Arbitration"/></div>
+          <div class="modal-related-icon" onclick="switchModal('publicinterest','corporate')"><img src="assets/svgs/corporate-law.svg" alt="Corporate"/></div>
+        </div>
+      </div>
+    </div>
+  </div>
+>
 </html>
