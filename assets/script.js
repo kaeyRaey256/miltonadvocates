@@ -81,8 +81,8 @@
   window.addEventListener('scroll', function() {
     if (!nb.classList.contains('hide')) {
       nb.style.boxShadow = window.scrollY > 60
-        ? '0 4px 32px rgba(0,0,128,0.55)'
-        : '0 2px 20px rgba(0,0,128,0.4)';
+        ? '0 4px 32px rgba(0,0,77,0.55)'
+        : '0 2px 20px rgba(0,0,77,0.4)';
     }
   }, { passive: true });
 })();
@@ -101,7 +101,7 @@ if (reveals.length) {
     });
   }, { threshold: 0.12 });
   reveals.forEach((el, i) => {
-    el.dataset.delay = i * 50;
+    if (!el.dataset.delay) el.dataset.delay = i * 50;
     observer.observe(el);
   });
 }
@@ -270,7 +270,16 @@ function handleFormSubmit(e) {
   const path = window.location.pathname;
   document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(l => {
     const href = l.getAttribute('href') || '';
-    if (path.endsWith('contact.html') && href.includes('contact')) l.classList.add('active');
-    else if ((path.endsWith('index.html') || path.endsWith('/') || path === '') && href === 'index.html') l.classList.add('active');
+    if (path.endsWith('contact.html') && href.includes('contact')) {
+      l.classList.add('active');
+    } else if (path.endsWith('about.html') && href.includes('about')) {
+      l.classList.add('active');
+    } else if (path.endsWith('careers.html') && href.includes('careers')) {
+      l.classList.add('active');
+    } else if (path.endsWith('legal.html') && href.includes('legal')) {
+      l.classList.add('active');
+    } else if ((path.endsWith('index.html') || path.endsWith('/') || path === '') && href === 'index.html') {
+      l.classList.add('active');
+    }
   });
 })();
