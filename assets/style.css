@@ -14,6 +14,7 @@
   --ease-out:  cubic-bezier(0, 0, 0.2, 1);
   --t:         0.3s;
   --t-slow:    0.6s;
+  --ease-spring: var(--ease-spring);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -119,7 +120,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
   display: block; width: 22px; height: 1.5px;
   background: var(--offwhite); border-radius: 2px;
   position: absolute;
-  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+  transition: transform 0.4s var(--ease-spring),
               opacity   0.3s ease,
               width     0.3s ease;
 }
@@ -150,7 +151,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
   display: flex; flex-direction: column;
   background: linear-gradient(175deg, #000042 0%, #00004d 45%, #00002d 100%);
   transform: translateX(100%);
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.5s var(--ease-spring);
   box-shadow: -12px 0 60px rgba(0,0,0,0.5);
   overflow: hidden;
 }
@@ -211,7 +212,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .mobile-nav ul li {
   opacity: 0;
   transform: translateX(20px);
-  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.23,1,0.32,1);
+  transition: opacity 0.35s ease, transform 0.35s var(--ease-spring);
 }
 .mobile-nav ul li:nth-child(1) { transition-delay: 0.05s; }
 .mobile-nav ul li:nth-child(2) { transition-delay: 0.10s; }
@@ -433,7 +434,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .team-member-card {
   background: #fff; border-radius: 4px; overflow: hidden; cursor: pointer;
   border: 1px solid rgba(0,0,77,0.08); box-shadow: 0 4px 20px rgba(0,0,77,0.06);
-  position: relative;
+  position: relative; transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
   transition: box-shadow var(--t-slow) var(--ease), transform var(--t-slow) var(--ease);
 }
 .team-member-card:hover {
@@ -455,7 +456,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .team-expand-arrow svg { stroke: var(--cyan); }
 .team-expand-arrow.open { transform: rotate(180deg); background: rgba(0,231,255,0.25); }
 .team-expand-panel { max-height: 0; overflow: hidden; transition: max-height 0.65s var(--ease-out), opacity 0.45s ease; opacity: 0; }
-.team-expand-panel.open { max-height: 900px; opacity: 1; }
+.team-expand-panel.open { max-height: 2400px; opacity: 1; }
 .team-members-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 36px; }
 
 /* Quote card */
@@ -811,39 +812,8 @@ footer .container { position: relative; z-index: 1; }
 
 /* === POSITION CARDS (team expand) === */
 
-.position-card {
-  display: block;
-  background: #fff; border: 1px solid rgba(0,0,77,0.1);
-  border-radius: 4px; padding: 28px 24px;
-  text-decoration: none; color: var(--navy);
-  position: relative; overflow: hidden;
-  transition: box-shadow var(--t-slow) var(--ease), transform var(--t-slow) var(--ease), border-color var(--t) var(--ease);
-}
-.position-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--navy), var(--cyan));
-}
-.position-card:hover {
-  box-shadow: 0 16px 40px rgba(0,0,77,0.12); transform: translateY(-4px);
-  border-color: rgba(0,0,77,0.2);
-}
-.position-type {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--blue); margin-bottom: 10px;
-}
-.position-vacancy {
-  font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 400;
-  color: var(--navy); opacity: 0.6; line-height: 1.4; margin-bottom: 16px;
-}
-.position-cta {
-  font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
-  text-transform: uppercase; color: var(--cyan);
-  transition: opacity var(--t);
-}
-.position-card:hover .position-cta { opacity: 0.8; }
-
 /* === SCROLL REVEAL === */
-.scroll-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.38s ease, transform 0.38s var(--ease); }
+.scroll-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.45s var(--ease), transform 0.45s var(--ease); }
 .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* === RESPONSIVE === */
@@ -1029,7 +999,7 @@ footer .container { position: relative; z-index: 1; }
   box-sizing: border-box;
 }
 .newsletter-input::placeholder { color: rgba(249,248,247,0.4); }
-.newsletter-input:focus { border-color: var(--cyan); }
+.newsletter-input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,231,255,0.12); outline: none; }
 .newsletter-select option { background: var(--navy); color: var(--offwhite); }
 .newsletter-btn { width: 100%; justify-content: center; margin-top: 8px; }
 .newsletter-disclaimer { font-size: 11px; color: rgba(249,248,247,0.4); margin-top: 12px; text-align: center; line-height: 1.6; }
@@ -1110,4 +1080,115 @@ footer .container { position: relative; z-index: 1; }
 @media (max-width: 600px) {
   .why-grid { grid-template-columns: 1fr; }
   .about-sidebar { flex-direction: column; }
+}
+
+/* ═══════════════════════════════════════════════
+   LUXURY ENHANCEMENTS
+═══════════════════════════════════════════════ */
+
+/* Font rendering — Playfair Display deserves this */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Font features — kerning and ligatures on headings */
+h1, h2, h3, .team-card-name, .attorney-role {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+/* Brand text selection */
+::selection {
+  background: var(--cyan);
+  color: var(--navy);
+}
+::-moz-selection {
+  background: var(--cyan);
+  color: var(--navy);
+}
+
+/* Custom scrollbar — thin, branded */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--offwhite); }
+::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--navy-mid); }
+
+/* Focus visible — clean keyboard nav, no mouse outlines */
+*:focus { outline: none; }
+*:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Why card transition */
+.why-card {
+  transition: border-top-color var(--t) var(--ease), box-shadow var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.why-card:hover { transform: translateY(-4px); }
+
+/* CSR pillar transition */
+.csr-pillar {
+  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+.csr-pillar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,77,0.1);
+}
+
+/* About stat card subtle hover */
+.about-stat-card {
+  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+.about-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,77,0.3);
+}
+
+/* Team member card — lift on hover consistent with practice cards */
+.team-member-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Two fill cards for the team grid */
+.team-join-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border-radius: 4px; overflow: hidden; cursor: pointer;
+  border: 1px solid rgba(0,231,255,0.12);
+  display: flex; flex-direction: column;
+  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+  text-decoration: none;
+}
+.team-join-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 56px rgba(0,0,77,0.35), 0 0 0 1px rgba(0,231,255,0.2);
+}
+.team-join-card-inner {
+  padding: 36px 28px 32px;
+  display: flex; flex-direction: column; height: 100%;
+  min-height: 320px; justify-content: space-between;
+}
+.team-join-card-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--cyan); margin-bottom: 16px;
+}
+.team-join-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; color: var(--offwhite); line-height: 1.3; margin-bottom: 14px;
+}
+.team-join-card p {
+  font-size: 13px; color: rgba(249,248,247,0.6); line-height: 1.7; margin-bottom: 28px; flex: 1;
+}
+.team-join-card .team-join-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--cyan);
+  transition: gap var(--t) var(--ease);
+}
+.team-join-card:hover .team-join-cta { gap: 14px; }
+
+/* Photo height on mobile — more face visible */
+@media (max-width: 768px) {
+  .team-member-card > div:first-child { height: 280px !important; }
 }
