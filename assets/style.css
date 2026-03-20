@@ -148,7 +148,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
   width: min(320px, 84vw);
   z-index: 9999;
   display: flex; flex-direction: column;
-  background: linear-gradient(175deg, #000042 0%, #000080 45%, #00002d 100%);
+  background: linear-gradient(175deg, #000042 0%, #00004d 45%, #00002d 100%);
   transform: translateX(100%);
   transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   box-shadow: -12px 0 60px rgba(0,0,0,0.5);
@@ -319,8 +319,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .hero h1 span { color: var(--cyan); }
 .hero p {
   color: rgba(249,248,247,0.82); font-size: 15px; line-height: 1.7;
-  margin-bottom: 36px; max-width: 440px;
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  margin-bottom: 36px; max-width: 540px;
 }
 .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
 
@@ -880,6 +879,7 @@ footer .container { position: relative; z-index: 1; }
   .hero-image, .hero-image-overlay { display: none; }
   .hero .container { justify-content: flex-start; }
   .hero-content { width: 100%; max-width: 100%; padding: 50px 0 38px; }
+  .hero p { max-width: 100%; }
   .hero-cta { flex-direction: column; align-items: flex-start; }
   .process-grid { grid-template-columns: 1fr; gap: 20px; }
   .practice-grid { display: none; }
@@ -890,6 +890,7 @@ footer .container { position: relative; z-index: 1; }
   .social-feeds-grid { grid-template-columns: 1fr; }
   .modal { grid-template-columns: 1fr; }
   .modal-image { height: 260px; min-height: unset; }
+  .attorney-modal .modal-image { height: 300px; min-height: unset; }
   .modal-cyan-bar { top: auto; left: 0; right: 0; bottom: 0; width: auto; height: 5px; }
   .modal-content { padding: 32px 24px; }
   .modal-contact-btn { display: inline-flex; }
@@ -909,6 +910,8 @@ footer .container { position: relative; z-index: 1; }
   .hero h1 { font-size: 28px; }
   .process-section, .practice-section, .team-section, .social-section { padding: 64px 0; }
   .modal-content { padding: 24px 16px; }
+  .modal { max-height: 95vh; }
+  .modal-overlay { align-items: flex-end; padding: 0; }
   .ct-body { padding: 60px 0 80px; }
 }
 
