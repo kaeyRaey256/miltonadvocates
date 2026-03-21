@@ -294,6 +294,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 
 /* === DIVIDER & EYEBROW === */
 .section-divider { height: 4px; background: linear-gradient(90deg, var(--navy), var(--cyan), var(--navy)); }
+.section-divider.fade-down { height: 24px; background: linear-gradient(to bottom, var(--navy) 0%, var(--offwhite) 100%); border: none; }
 .section-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
 .section-eyebrow-line { width: 40px; height: 2px; background: var(--cyan); flex-shrink: 0; }
 .section-eyebrow span { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--blue); }
@@ -407,13 +408,19 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .practice-list-arrow { margin-left: auto; color: var(--cyan); font-size: 24px; flex-shrink: 0; }
 
 /* === TEAM SECTION === */
-.team-section { padding: 100px 0; background: var(--offwhite); position: relative; }
+.team-section {
+  padding: 100px 0;
+  background: var(--offwhite);
+  position: relative;
+}
 .team-section::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--cyan) 0%, var(--cyan) 20%, var(--navy-mid) 50%, transparent 100%);
+  height: 32px;
+  background: linear-gradient(to bottom, var(--navy) 0%, var(--offwhite) 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 .team-header { margin-bottom: 52px; }
 .team-grid { display: grid; grid-template-columns: 380px 1fr; gap: 40px; align-items: stretch; }
@@ -455,6 +462,10 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .team-member-badge { position: absolute; top: 16px; right: 16px; background: var(--cyan); color: var(--navy); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; z-index: 2; }
 
 /* Expand bar */
+@keyframes lazyFloat {
+  0%, 100% { transform: translateY(0); box-shadow: 0 4px 20px rgba(0,0,77,0.15); }
+  50%       { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,77,0.22); }
+}
 .team-expand-bar {
   display: flex; align-items: center; justify-content: space-between;
   margin-top: 48px; padding: 20px 28px; background: var(--navy);
@@ -462,22 +473,19 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
   font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.04em;
   transition: background var(--t) var(--ease), box-shadow var(--t) var(--ease);
   position: relative; overflow: hidden;
-  border-left: 3px solid var(--cyan);
   box-shadow: 0 4px 20px rgba(0,0,77,0.15);
+  animation: lazyFloat 3.5s ease-in-out infinite;
 }
 .team-expand-bar::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--cyan), transparent 60%);
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--cyan) 30%, var(--cyan) 70%, transparent 100%);
   pointer-events: none;
 }
 .team-expand-bar:hover {
   background: var(--navy-mid);
-  box-shadow: 0 8px 32px rgba(0,0,77,0.25), 0 0 0 1px rgba(0,231,255,0.15);
+  box-shadow: 0 8px 28px rgba(0,0,77,0.25);
+  animation-play-state: paused;
 }
-.team-expand-bar:hover { background: var(--navy-mid); }
 .team-expand-arrow { width: 32px; height: 32px; border-radius: 50%; background: rgba(0,231,255,0.15); border: 1px solid rgba(0,231,255,0.3); display: flex; align-items: center; justify-content: center; transition: transform var(--t-slow) var(--ease), background var(--t); flex-shrink: 0; }
 .team-expand-arrow svg { stroke: var(--cyan); }
 .team-expand-arrow.open { transform: rotate(180deg); background: rgba(0,231,255,0.25); }
@@ -1049,11 +1057,18 @@ footer .container { position: relative; z-index: 1; }
   position: relative; overflow: hidden; isolation: isolate;
 }
 .about-hero::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
   background-image:
-    repeating-linear-gradient(45deg, transparent, transparent 28px, rgba(0,231,255,0.03) 28px, rgba(0,231,255,0.03) 29px),
-    repeating-linear-gradient(-45deg, transparent, transparent 48px, rgba(0,128,255,0.018) 48px, rgba(0,128,255,0.018) 49px);
-  animation: navPatternDrift 20s linear infinite;
+    repeating-linear-gradient(
+      45deg, transparent, transparent 28px,
+      rgba(0,231,255,0.03) 28px, rgba(0,231,255,0.03) 29px
+    ),
+    repeating-linear-gradient(
+      -45deg, transparent, transparent 48px,
+      rgba(0,128,255,0.018) 48px, rgba(0,128,255,0.018) 49px
+    );
+  background-size: 60px 60px, 100px 100px;
+  animation: navPatternDrift 18s linear infinite;
 }
 .about-hero-inner { max-width: 720px; position: relative; }
 .about-hero h1 { font-size: clamp(32px,4vw,56px); color: var(--offwhite); line-height: 1.1; margin-bottom: 20px; }
@@ -1210,7 +1225,7 @@ h1, h2, h3, .team-card-name, .attorney-role {
 
 /* Photo height on mobile — more face visible */
 @media (max-width: 768px) {
-  .team-member-card > div:first-child { height: 320px; }
+  .team-member-card > div:first-child { height: 360px; }
 }
 
 /* Why cards — animated border, touch + hover */
