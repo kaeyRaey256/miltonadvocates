@@ -797,13 +797,11 @@
   <div class="modal-overlay" id="modal-attorney" onclick="closeModalOnOverlay(event,'attorney')">
     <div class="modal attorney-modal">
       <button class="modal-close" onclick="closeModal('attorney')">&#x2715;</button>
-      <div class="modal-image modal-portrait-image">
-        <div class="portrait-blur-bg" style="background-image:url('assets/images/attorney.jpg');"></div>
-        <div class="portrait-sharp-wrap">
-          <img src="assets/images/attorney.jpg" alt="Milton Ocen" class="portrait-sharp"
-               onerror="this.closest('.modal-portrait-image').querySelector('.portrait-initials').style.display='flex';this.closest('.portrait-sharp-wrap').style.display='none';">
-        </div>
-        <div class="portrait-initials" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
+      <div class="modal-image attorney-portrait lead-attorney-img">
+        <img src="assets/images/attorney.jpg" alt="Milton Ocen"
+             style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="modal-initials-fallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
           <span style="font-family:'Playfair Display',serif;font-size:72px;color:var(--cyan);font-weight:700;">MO</span>
         </div>
         <div class="modal-cyan-bar"></div>
@@ -835,13 +833,11 @@
   <div class="modal-overlay" id="modal-tm-ssenyonga" onclick="closeModalOnOverlay(event,'tm-ssenyonga')">
     <div class="modal attorney-modal">
       <button class="modal-close" onclick="closeModal('tm-ssenyonga')">&#x2715;</button>
-      <div class="modal-image modal-portrait-image">
-        <div class="portrait-blur-bg" style="background-image:url('assets/images/attorney-ssenyonga.jpg');"></div>
-        <div class="portrait-sharp-wrap">
-          <img src="assets/images/attorney-ssenyonga.jpg" alt="Ssenyonga Simon" class="portrait-sharp"
-               onerror="this.closest('.modal-portrait-image').querySelector('.portrait-initials').style.display='flex';this.closest('.portrait-sharp-wrap').style.display='none';">
-        </div>
-        <div class="portrait-initials" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
+      <div class="modal-image attorney-portrait team-attorney-img">
+        <img src="assets/images/attorney-ssenyonga.jpg" alt="Ssenyonga Simon"
+             style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="modal-initials-fallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
           <span style="font-family:'Playfair Display',serif;font-size:72px;color:var(--cyan);font-weight:700;">SS</span>
         </div>
         <div class="modal-cyan-bar"></div>
@@ -857,13 +853,11 @@
   <div class="modal-overlay" id="modal-tm-lucy" onclick="closeModalOnOverlay(event,'tm-lucy')">
     <div class="modal attorney-modal">
       <button class="modal-close" onclick="closeModal('tm-lucy')">&#x2715;</button>
-      <div class="modal-image modal-portrait-image">
-        <div class="portrait-blur-bg" style="background-image:url('assets/images/attorney-lucy.jpg');"></div>
-        <div class="portrait-sharp-wrap">
-          <img src="assets/images/attorney-lucy.jpg" alt="Lucy Suky" class="portrait-sharp"
-               onerror="this.closest('.modal-portrait-image').querySelector('.portrait-initials').style.display='flex';this.closest('.portrait-sharp-wrap').style.display='none';">
-        </div>
-        <div class="portrait-initials" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
+      <div class="modal-image attorney-portrait team-attorney-img">
+        <img src="assets/images/attorney-lucy.jpg" alt="Lucy Suky"
+             style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="modal-initials-fallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
           <span style="font-family:'Playfair Display',serif;font-size:72px;color:var(--cyan);font-weight:700;">LS</span>
         </div>
         <div class="modal-cyan-bar"></div>
@@ -879,13 +873,11 @@
   <div class="modal-overlay" id="modal-tm-isingoma" onclick="closeModalOnOverlay(event,'tm-isingoma')">
     <div class="modal attorney-modal">
       <button class="modal-close" onclick="closeModal('tm-isingoma')">&#x2715;</button>
-      <div class="modal-image modal-portrait-image">
-        <div class="portrait-blur-bg" style="background-image:url('assets/images/attorney-isingoma.jpg');"></div>
-        <div class="portrait-sharp-wrap">
-          <img src="assets/images/attorney-isingoma.jpg" alt="Isingoma Derrick" class="portrait-sharp"
-               onerror="this.closest('.modal-portrait-image').querySelector('.portrait-initials').style.display='flex';this.closest('.portrait-sharp-wrap').style.display='none';">
-        </div>
-        <div class="portrait-initials" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
+      <div class="modal-image attorney-portrait team-attorney-img">
+        <img src="assets/images/attorney-isingoma.jpg" alt="Isingoma Derrick"
+             style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="modal-initials-fallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
           <span style="font-family:'Playfair Display',serif;font-size:72px;color:var(--cyan);font-weight:700;">ID</span>
         </div>
         <div class="modal-cyan-bar"></div>
@@ -901,13 +893,11 @@
   <div class="modal-overlay" id="modal-tm-brian" onclick="closeModalOnOverlay(event,'tm-brian')">
     <div class="modal attorney-modal">
       <button class="modal-close" onclick="closeModal('tm-brian')">&#x2715;</button>
-      <div class="modal-image modal-portrait-image">
-        <div class="portrait-blur-bg" style="background-image:url('assets/images/attorney-brian.jpg');"></div>
-        <div class="portrait-sharp-wrap">
-          <img src="assets/images/attorney-brian.jpg" alt="Brian Ssenabulya" class="portrait-sharp"
-               onerror="this.closest('.modal-portrait-image').querySelector('.portrait-initials').style.display='flex';this.closest('.portrait-sharp-wrap').style.display='none';">
-        </div>
-        <div class="portrait-initials" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
+      <div class="modal-image attorney-portrait team-attorney-img">
+        <img src="assets/images/attorney-brian.jpg" alt="Brian Ssenabulya"
+             style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="modal-initials-fallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
           <span style="font-family:'Playfair Display',serif;font-size:72px;color:var(--cyan);font-weight:700;">BS</span>
         </div>
         <div class="modal-cyan-bar"></div>
