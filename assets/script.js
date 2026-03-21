@@ -244,6 +244,17 @@ function toggleTeamExpand() {
   }, { passive: true });
 })();
 
+
+/* === PUBLICATIONS DROPDOWN === */
+function togglePublications() {
+  var wrap  = document.getElementById('pubDropdown');
+  var panel = document.getElementById('pubDropdownPanel');
+  var btn   = wrap ? wrap.querySelector('.pub-dropdown-trigger') : null;
+  if (!wrap || !panel) return;
+  var isOpen = wrap.classList.toggle('open');
+  if (btn) btn.setAttribute('aria-expanded', String(isOpen));
+}
+
 /* === CONTACT FORM === */
 function handleFormSubmit(e) {
   e.preventDefault();
