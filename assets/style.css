@@ -407,7 +407,14 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .practice-list-arrow { margin-left: auto; color: var(--cyan); font-size: 24px; flex-shrink: 0; }
 
 /* === TEAM SECTION === */
-.team-section { padding: 100px 0; background: var(--offwhite); }
+.team-section { padding: 100px 0; background: var(--offwhite); position: relative; }
+.team-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent 0%, var(--cyan) 30%, var(--navy) 60%, transparent 100%);
+}
 .team-header { margin-bottom: 52px; }
 .team-grid { display: grid; grid-template-columns: 380px 1fr; gap: 40px; align-items: stretch; }
 .team-card {
@@ -1148,9 +1155,6 @@ h1, h2, h3, .team-card-name, .attorney-role {
 }
 
 /* Team member card — lift on hover consistent with practice cards */
-.team-member-card:hover {
-  transform: translateY(-5px);
-}
 
 /* Two fill cards for the team grid */
 .team-join-card {
@@ -1191,7 +1195,7 @@ h1, h2, h3, .team-card-name, .attorney-role {
 
 /* Photo height on mobile — more face visible */
 @media (max-width: 768px) {
-  .team-member-card > div:first-child { height: 280px; }
+  .team-member-card > div:first-child { height: 320px; }
 }
 
 /* Why cards — animated border, touch + hover */
@@ -1240,13 +1244,13 @@ h1, h2, h3, .team-card-name, .attorney-role {
   z-index: 1;
 }
 
-/* ── Tablet and phone: navy bg, photo contained ── */
-/* Use doubled class for higher specificity than .modal-image rules */
+/* ── Tablet and phone: navy bg, portrait contained ── */
 @media (max-width: 768px) {
 
+  /* Specificity: 2 classes beats 1 class — no !important needed */
   .modal-image.attorney-portrait {
-    height: 360px !important;
-    min-height: unset !important;
+    height: 380px;
+    min-height: unset;
     background: var(--navy);
     display: flex;
     align-items: center;
@@ -1254,33 +1258,42 @@ h1, h2, h3, .team-card-name, .attorney-role {
     overflow: hidden;
   }
   .attorney-modal .modal-image.attorney-portrait {
-    height: 400px !important;
+    height: 420px;
   }
 
-  /* Override .modal-image img base rule for portrait panels */
+  /* 3 selectors beats .modal-image img (2 selectors) */
   .modal-image.attorney-portrait > img {
-    position: relative !important;
-    inset: auto !important;
-    width: auto !important;
-    max-width: 70% !important;
-    height: 100% !important;
-    max-height: 100% !important;
-    object-fit: cover !important;
-    object-position: center top !important;
-    display: block !important;
+    position: relative;
+    inset: auto;
+    width: auto;
+    max-width: 72%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
     z-index: 1;
     flex-shrink: 0;
   }
   .attorney-modal .modal-image.attorney-portrait > img {
-    max-width: 76% !important;
+    max-width: 78%;
   }
+
+  /* Main team card height on tablet */
+  .team-card-image { height: 420px; }
+  /* Team expand panel cards on tablet */
+  .team-member-card > div:first-child { height: 360px; }
 }
 
 @media (max-width: 480px) {
-  .modal-image.attorney-portrait { height: 300px !important; }
-  .attorney-modal .modal-image.attorney-portrait { height: 330px !important; }
-  .modal-image.attorney-portrait > img { max-width: 65% !important; }
-  .attorney-modal .modal-image.attorney-portrait > img { max-width: 70% !important; }
+  .modal-image.attorney-portrait { height: 320px; }
+  .attorney-modal .modal-image.attorney-portrait { height: 350px; }
+  .modal-image.attorney-portrait > img { max-width: 68%; }
+  .attorney-modal .modal-image.attorney-portrait > img { max-width: 74%; }
+  /* Main team card height on phone */
+  .team-card-image { height: 380px; }
+  /* Team expand panel cards on phone */
+  .team-member-card > div:first-child { height: 340px; }
 }
 
 /* ═══════════════════════════════════════════════
