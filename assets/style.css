@@ -294,7 +294,6 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 
 /* === DIVIDER & EYEBROW === */
 .section-divider { height: 4px; background: linear-gradient(90deg, var(--navy), var(--cyan), var(--navy)); }
-.section-divider.fade-down { height: 24px; background: linear-gradient(to bottom, var(--navy) 0%, var(--offwhite) 100%); border: none; }
 .section-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
 .section-eyebrow-line { width: 40px; height: 2px; background: var(--cyan); flex-shrink: 0; }
 .section-eyebrow span { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--blue); }
