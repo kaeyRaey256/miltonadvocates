@@ -420,7 +420,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
   transform: translateY(-5px);
 }
 .team-card-image { height: 340px; overflow: hidden; position: relative; }
-.team-card-image img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.7s var(--ease); }
+.team-card-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; transition: transform 0.7s var(--ease); }
 .team-card:hover .team-card-image img { transform: scale(1.05); }
 .team-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,77,0.85) 0%, transparent 60%); display: flex; align-items: flex-end; padding: 24px; opacity: 0; transition: opacity var(--t-slow); }
 .team-card:hover .team-card-overlay { opacity: 1; }
@@ -1191,7 +1191,7 @@ h1, h2, h3, .team-card-name, .attorney-role {
 
 /* Photo height on mobile — more face visible */
 @media (max-width: 768px) {
-  .team-member-card > div:first-child { height: 280px !important; }
+  .team-member-card > div:first-child { height: 280px; }
 }
 
 /* Why cards — animated border, touch + hover */
@@ -1214,88 +1214,73 @@ h1, h2, h3, .team-card-name, .attorney-role {
 /* ═══════════════════════════════════════════════
    ATTORNEY PORTRAIT MODAL IMAGE
    Desktop: plain full-panel photo
-   Tablet/phone: blur background + soft portrait
+   Tablet/phone: navy bg + contained centred portrait
 ═══════════════════════════════════════════════ */
 
-/* ── Desktop default — plain photo fills panel ── */
+/* ── Desktop: plain full-panel photo ── */
 .attorney-portrait {
   position: relative;
   overflow: hidden;
 }
-.lead-attorney-img {
-  min-height: 480px;
-}
-.team-attorney-img {
-  min-height: 420px;
-}
-.attorney-portrait img {
+.lead-attorney-img { min-height: 480px; }
+.team-attorney-img { min-height: 420px; }
+
+.attorney-portrait > img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center 20%;
   display: block;
 }
 .attorney-portrait .modal-initials-fallback {
   position: absolute;
   inset: 0;
+  z-index: 1;
 }
 
-/* ── Tablet and phone — portrait treatment ── */
+/* ── Tablet and phone: navy bg, photo contained ── */
+/* Use doubled class for higher specificity than .modal-image rules */
 @media (max-width: 768px) {
-  .attorney-portrait {
-    height: 360px;
-    min-height: unset;
+
+  .modal-image.attorney-portrait {
+    height: 360px !important;
+    min-height: unset !important;
     background: var(--navy);
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
+    overflow: hidden;
   }
-  .lead-attorney-img {
-    height: 400px;
+  .attorney-modal .modal-image.attorney-portrait {
+    height: 400px !important;
   }
-  /* Blur background via pseudo-element using the img src trick */
-  .attorney-portrait::before {
-    content: '';
-    position: absolute;
-    inset: -40px;
-    background-image: inherit;
-    background-size: cover;
-    background-position: center 15%;
-    filter: blur(24px) brightness(0.35) saturate(0.5);
-    transform: scale(1.18);
-    z-index: 0;
-    pointer-events: none;
-  }
-  .attorney-portrait img {
-    position: relative;
+
+  /* Override .modal-image img base rule for portrait panels */
+  .modal-image.attorney-portrait > img {
+    position: relative !important;
+    inset: auto !important;
+    width: auto !important;
+    max-width: 70% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    display: block !important;
     z-index: 1;
-    width: 78%;
-    max-width: 280px;
-    height: auto;
-    max-height: 96%;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 14px 14px 0 0;
-    box-shadow:
-      0 -4px 28px rgba(0,0,0,0.4),
-      -16px 0 32px rgba(0,0,10,0.4),
-      16px 0 32px rgba(0,0,10,0.4);
-    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+    flex-shrink: 0;
   }
-  .lead-attorney-img img {
-    width: 82%;
-    max-width: 310px;
+  .attorney-modal .modal-image.attorney-portrait > img {
+    max-width: 76% !important;
   }
 }
+
 @media (max-width: 480px) {
-  .attorney-portrait { height: 300px; }
-  .lead-attorney-img { height: 330px; }
-  .attorney-portrait img {
-    width: 72%;
-    max-width: 230px;
-    border-radius: 10px 10px 0 0;
-  }
+  .modal-image.attorney-portrait { height: 300px !important; }
+  .attorney-modal .modal-image.attorney-portrait { height: 330px !important; }
+  .modal-image.attorney-portrait > img { max-width: 65% !important; }
+  .attorney-modal .modal-image.attorney-portrait > img { max-width: 70% !important; }
 }
 
 /* ═══════════════════════════════════════════════
