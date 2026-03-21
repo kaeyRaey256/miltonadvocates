@@ -412,15 +412,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
   background: var(--offwhite);
   position: relative;
 }
-.team-section::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 32px;
-  background: linear-gradient(to bottom, var(--navy) 0%, var(--offwhite) 100%);
-  pointer-events: none;
-  z-index: 0;
-}
+
 .team-header { margin-bottom: 52px; }
 .team-grid { display: grid; grid-template-columns: 380px 1fr; gap: 40px; align-items: stretch; }
 .team-card {
