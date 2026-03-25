@@ -276,6 +276,22 @@ function handleFormSubmit(e) {
   }, 1200);
 }
 
+/* === NEWSLETTER FORM === */
+function handleNewsletterSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.newsletter-btn');
+  const orig = btn.textContent;
+  btn.textContent = 'Subscribed ✓';
+  btn.style.background = '#007a42';
+  btn.style.borderColor = '#007a42';
+  setTimeout(() => {
+    btn.textContent = orig;
+    btn.style.background = '';
+    btn.style.borderColor = '';
+    e.target.reset();
+  }, 3000);
+}
+
 /* === NAVBAR ACTIVE LINK === */
 (function () {
   const path = window.location.pathname;
