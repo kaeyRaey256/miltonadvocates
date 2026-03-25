@@ -18,7 +18,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body { font-family: 'Nunito Sans', Helvetica, Arial, sans-serif; color: var(--text); background: var(--offwhite); overflow-x: hidden; }
 h1, h2, h3, h4 { font-family: 'Playfair Display', 'Times New Roman', serif; }
 h1 { font-weight: 700; } h2, h3, h4 { font-weight: 400; }
@@ -481,7 +481,7 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .team-expand-arrow svg { stroke: var(--cyan); }
 .team-expand-arrow.open { transform: rotate(180deg); background: rgba(0,231,255,0.25); }
 .team-expand-panel { max-height: 0; overflow: hidden; transition: max-height 0.65s var(--ease-out), opacity 0.45s ease; opacity: 0; }
-.team-expand-panel.open { max-height: 2400px; opacity: 1; }
+.team-expand-panel.open { max-height: 3600px; opacity: 1; }
 .team-members-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 36px; }
 
 /* Quote card */
@@ -1737,7 +1737,10 @@ h1, h2, h3, .team-card-name, .attorney-role {
 .legal-hero-sub { color: rgba(249,248,247,0.7); font-size: 15px; line-height: 1.7; max-width: 540px; }
 .legal-tabs-wrap {
   background: var(--offwhite); border-bottom: 1px solid rgba(0,0,128,0.08);
-  position: sticky; top: 0; z-index: 100;
+  position: sticky; top: 88px; z-index: 100;
+}
+@media (max-width: 768px) {
+  .legal-tabs-wrap { top: 0; }
 }
 .legal-tabs { display: flex; gap: 0; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 .legal-tab {
