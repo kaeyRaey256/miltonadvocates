@@ -2,22 +2,31 @@
    MILTON ADVOCATES — script.js  v5
    ============================================================ */
 
-/* === NAVBAR HIDE ON FOOTER === */
+/* === NAVBAR HIDE ON FOOTER — desktop only === */
 (function () {
   const navbar = document.getElementById('navbar');
   const footer = document.getElementById('site-footer');
   if (!navbar || !footer) return;
+
+  function isDesktop() { return window.innerWidth > 768; }
+
   function checkFooter() {
+    if (!isDesktop()) {
+      // Always show navbar on mobile — mobile nav is handled separately
+      navbar.classList.remove('hide');
+      return;
+    }
     const footerTop = footer.getBoundingClientRect().top;
     const winH = window.innerHeight;
-    // Hide navbar the moment footer enters the viewport
     if (footerTop < winH) {
       navbar.classList.add('hide');
     } else {
       navbar.classList.remove('hide');
     }
   }
+
   window.addEventListener('scroll', checkFooter, { passive: true });
+  window.addEventListener('resize', checkFooter, { passive: true });
   checkFooter();
 })();
 
@@ -291,6 +300,64 @@ function handleNewsletterSubmit(e) {
     e.target.reset();
   }, 3000);
 }
+
+/* === LEGAL PAGE — TAB ACTIVE STATE === */
+function setActive(el) {
+  document.querySelectorAll('.legal-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+/* === LEGAL PAGE — SCROLL-SPY: auto-activate tab as sections enter view === */
+(function () {
+  const tabs = document.querySelectorAll('.legal-tab');
+  if (!tabs.length) return;
+  const sections = ['privacy', 'terms', 'disclaimer'].map(id => document.getElementById(id)).filter(Boolean);
+  if (!sections.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tabs.forEach(t => {
+          t.classList.toggle('active', t.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+})();
+
+/* === LEGAL TABS — dock offset adjusts when navbar hides === */
+(function () {
+  const tabsWrap = document.querySelector('.legal-tabs-wrap');
+  const navbar   = document.getElementById('navbar');
+  if (!tabsWrap || !navbar) return;
+  function syncTabsTop() {
+    if (window.innerWidth <= 768) { tabsWrap.style.top = '0px'; return; }
+    if (navbar.classList.contains('hide')) {
+      tabsWrap.style.top = '0px';
+    } else {
+      tabsWrap.style.top = navbar.offsetHeight + 'px';
+    }
+  }
+  window.addEventListener('scroll', syncTabsTop, { passive: true });
+  window.addEventListener('resize', syncTabsTop, { passive: true });
+  // Use MutationObserver to react when navbar gains/loses .hide class
+  new MutationObserver(syncTabsTop).observe(navbar, { attributes: true, attributeFilter: ['class'] });
+  syncTabsTop();
+})();
+
+/* === PAGE LOAD FADE-IN === */
+(function () {
+  document.documentElement.style.opacity = '0';
+  document.documentElement.style.transition = 'opacity 0.3s ease';
+  window.addEventListener('load', function () {
+    requestAnimationFrame(function () {
+      document.documentElement.style.opacity = '1';
+    });
+  });
+})();
 
 /* === NAVBAR ACTIVE LINK === */
 (function () {
