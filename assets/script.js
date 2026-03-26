@@ -334,7 +334,10 @@ function setActive(el) {
   const navbar   = document.getElementById('navbar');
   if (!tabsWrap || !navbar) return;
   function syncTabsTop() {
-    if (window.innerWidth <= 768) { tabsWrap.style.top = '0px'; return; }
+    if (window.innerWidth <= 768) {
+      tabsWrap.style.top = '72px';
+      return;
+    }
     if (navbar.classList.contains('hide')) {
       tabsWrap.style.top = '0px';
     } else {
@@ -343,7 +346,6 @@ function setActive(el) {
   }
   window.addEventListener('scroll', syncTabsTop, { passive: true });
   window.addEventListener('resize', syncTabsTop, { passive: true });
-  // Use MutationObserver to react when navbar gains/loses .hide class
   new MutationObserver(syncTabsTop).observe(navbar, { attributes: true, attributeFilter: ['class'] });
   syncTabsTop();
 })();
