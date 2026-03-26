@@ -46,7 +46,11 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .btn-cyan:hover { background: transparent; color: var(--offwhite); border-color: var(--offwhite); }
 
 /* === TOP BAR === */
-.top-bar { background: var(--navy); color: var(--offwhite); font-size: 12px; padding: 8px 0; }
+.top-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+  background: var(--navy); color: var(--offwhite); font-size: 12px; padding: 8px 0;
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
 .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
 .top-bar-left { display: flex; gap: 24px; align-items: center; }
 .top-bar-left a { color: rgba(249,248,247,0.75); display: flex; align-items: center; gap: 6px; transition: color var(--t); }
@@ -64,23 +68,33 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 
 /* === NAVBAR === */
 .navbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 14px 0;
+  position: fixed; left: 0; right: 0; z-index: 1000; padding: 14px 0;
+  top: 36px; /* sits directly below top-bar (~36px tall) */
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #0d2260 100%);
   box-shadow: 0 2px 20px rgba(0,0,77,0.4);
   transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1);
   isolation: isolate;
 }
-.navbar.hide {
+/* Both top-bar and navbar slide up together as one unified header */
+.top-bar.hide {
   opacity: 0;
   transform: translateY(-100%);
   pointer-events: none;
 }
-/* Navbar hide only applies on desktop */
+.navbar.hide {
+  opacity: 0;
+  transform: translateY(-200%); /* moves up by its own height + top-bar height above it */
+  pointer-events: none;
+}
+/* Hide behaviour only on desktop — tablet and phone never hide */
 @media (max-width: 768px) {
+  .top-bar { display: none; } /* already hidden on mobile */
+  .top-bar.hide { display: none !important; }
+  .navbar { top: 0; }
   .navbar.hide { opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
 }
-/* Compensate for fixed navbar — push page content down */
-body { padding-top: 90px; }
+/* Compensate for fixed top-bar + navbar combined height */
+body { padding-top: 126px; } /* ~36px top-bar + ~90px navbar */
 @media (max-width: 768px) { body { padding-top: 72px; } }
 /* Navbar animated crosshatch pattern */
 .navbar::before {
