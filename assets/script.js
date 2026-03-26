@@ -11,14 +11,14 @@
 
   function isDesktop() { return window.innerWidth > 768; }
 
-  /* Position navbar directly below top-bar */
+  /* Position navbar directly below top-bar — must run after layout */
   function setNavbarTop() {
     if (!isDesktop()) {
       navbar.style.top = '0px';
       return;
     }
     const tbH = topBar ? topBar.offsetHeight : 0;
-    navbar.style.top = tbH + 'px';
+    navbar.style.top = (tbH || 36) + 'px'; /* fallback to 36px if not yet laid out */
   }
 
   function checkFooter() {
@@ -38,13 +38,25 @@
     }
   }
 
-  setNavbarTop();
+  /* Run after layout is fully computed */
+  function init() {
+    requestAnimationFrame(function() {
+      setNavbarTop();
+      checkFooter();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
   window.addEventListener('scroll', checkFooter, { passive: true });
   window.addEventListener('resize', function() {
     setNavbarTop();
     checkFooter();
   }, { passive: true });
-  checkFooter();
 })();
 
 /* === MOBILE NAV — premium slide drawer === */
@@ -372,18 +384,19 @@ function setActive(el) {
 /* === DYNAMIC BODY PADDING — accounts for fixed top-bar + navbar combined height === */
 (function () {
   function updateBodyPadding() {
-    var topBar = document.querySelector('.top-bar');
-    var navbar = document.getElementById('navbar');
-    if (!navbar) return;
-    var tbH = (topBar && window.innerWidth > 768) ? topBar.offsetHeight : 0;
-    var nbH = navbar.offsetHeight;
-    document.body.style.paddingTop = (tbH + nbH) + 'px';
+    requestAnimationFrame(function() {
+      var topBar = document.querySelector('.top-bar');
+      var navbar = document.getElementById('navbar');
+      if (!navbar) return;
+      var tbH = (topBar && window.innerWidth > 768) ? topBar.offsetHeight : 0;
+      var nbH = navbar.offsetHeight;
+      document.body.style.paddingTop = (tbH + nbH) + 'px';
+    });
   }
-  // Run after DOM is ready and fonts/layout have settled
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() { setTimeout(updateBodyPadding, 50); });
+    document.addEventListener('DOMContentLoaded', updateBodyPadding);
   } else {
-    setTimeout(updateBodyPadding, 50);
+    updateBodyPadding();
   }
   window.addEventListener('resize', updateBodyPadding, { passive: true });
 })();
