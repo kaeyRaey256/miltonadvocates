@@ -73,7 +73,9 @@
           <a href="contact.html" class="btn btn-cyan">Get in Touch</a>
           <a href="#practice" class="btn btn-outline-white">Explore Practice Areas</a>
         </div>
-       
+        <div class="practice-list-item" onclick="openModal('realestate')"><div class="practice-list-icon"><img loading="lazy" src="assets/svgs/re.svg" alt=""/></div><div class="practice-list-text"><h3>Real Estate Legal Services</h3><p>High-value transactions, developments and property acquisitions — full lifecycle coverage.</p></div><span class="practice-list-arrow">&#x203A;</span></div>
+      </div>
+    </div>
   </section>
   <div class="section-divider"></div>
 
@@ -232,10 +234,27 @@
       <div class="team-expand-panel" id="teamExpandPanel">
         <div class="team-members-grid">
 
-          <div class="team-member-card scroll-reveal" onclick="openModal('tm-ssenyonga')" style="cursor:pointer;">
+          <div class="team-member-card is-partner scroll-reveal" onclick="openModal('tm-lucy')" style="cursor:pointer;">
+            <div class="team-member-badge">Partner</div>
+            <div style="position:relative;height:380px;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
+              <img loading="lazy" src="assets/images/team-lucy-suky.jpg" alt="Lucy Suky" 
+                   style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
+                <span style="font-family:'Playfair Display',serif;font-size:52px;color:var(--cyan);font-weight:700;">LS</span>
+              </div>
+            </div>
+            <div style="padding:24px 20px 20px;">
+              <div class="team-card-name" style="font-size:18px;">Lucy Suky</div>
+              <div class="team-card-role" style="font-size:12px;color:var(--blue);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;">Partner</div>
+            </div>
+          </div>
+
+          <div class="team-member-card is-partner scroll-reveal" onclick="openModal('tm-ssenyonga')" style="cursor:pointer;">
+            <div class="team-member-badge">Associate Partner</div>
             <div style="position:relative;height:380px;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
               <img loading="lazy" src="assets/images/team-ssenyonga-simon.jpg" alt="Ssenyonga Simon" 
-                   style="width:100%;height:100%;object-fit:cover;object-position:center 72%;display:block;"
+                   style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;"
                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
               <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
                 <span style="font-family:'Playfair Display',serif;font-size:52px;color:var(--cyan);font-weight:700;">SS</span>
@@ -247,25 +266,10 @@
             </div>
           </div>
 
-          <div class="team-member-card scroll-reveal" onclick="openModal('tm-lucy')" style="cursor:pointer;">
-            <div style="position:relative;height:380px;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
-              <img loading="lazy" src="assets/images/team-lucy-suky.jpg" alt="Lucy Suky" 
-                   style="width:100%;height:100%;object-fit:cover;object-position:center 72%;display:block;"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-              <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
-                <span style="font-family:'Playfair Display',serif;font-size:52px;color:var(--cyan);font-weight:700;">LS</span>
-              </div>
-            </div>
-            <div style="padding:24px 20px 20px;">
-              <div class="team-card-name" style="font-size:18px;">Lucy Suky</div>
-              <div class="team-card-role" style="font-size:12px;color:var(--blue);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;">Principal Associate</div>
-            </div>
-          </div>
-
           <div class="team-member-card scroll-reveal" onclick="openModal('tm-isingoma')" style="cursor:pointer;">
             <div style="position:relative;height:380px;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
               <img loading="lazy" src="assets/images/team-isingoma-derrick.jpg" alt="Isingoma Derrick" 
-                   style="width:100%;height:100%;object-fit:cover;object-position:center 72%;display:block;"
+                   style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;"
                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
               <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
                 <span style="font-family:'Playfair Display',serif;font-size:52px;color:var(--cyan);font-weight:700;">ID</span>
@@ -280,7 +284,7 @@
           <div class="team-member-card scroll-reveal" onclick="openModal('tm-brian')" style="cursor:pointer;">
             <div style="position:relative;height:380px;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
               <img loading="lazy" src="assets/images/team-brian-ssenabulya.jpg" alt="Brian Ssenabulya" 
-                   style="width:100%;height:100%;object-fit:cover;object-position:center 72%;display:block;"
+                   style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;"
                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
               <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
                 <span style="font-family:'Playfair Display',serif;font-size:52px;color:var(--cyan);font-weight:700;">BS</span>
@@ -867,7 +871,7 @@
       <button class="modal-close" onclick="closeModal('tm-ssenyonga')">&#x2715;</button>
       <div class="modal-image attorney-portrait team-attorney-img">
         <img src="assets/images/attorney-ssenyonga.jpg" alt="Ssenyonga Simon"
-             style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;"
+             style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="modal-initials-fallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
           <span style="font-family:'Playfair Display',serif;font-size:72px;color:var(--cyan);font-weight:700;">SS</span>
@@ -887,7 +891,7 @@
       <button class="modal-close" onclick="closeModal('tm-lucy')">&#x2715;</button>
       <div class="modal-image attorney-portrait team-attorney-img">
         <img src="assets/images/attorney-lucy.jpg" alt="Lucy Suky"
-             style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;"
+             style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="modal-initials-fallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
           <span style="font-family:'Playfair Display',serif;font-size:72px;color:var(--cyan);font-weight:700;">LS</span>
@@ -895,8 +899,8 @@
         <div class="modal-cyan-bar"></div>
       </div>
       <div class="modal-content">
-        <div class="modal-header"><div><h2>Lucy Suky</h2><div class="attorney-role">Principal Associate</div></div></div>
-        <div class="attorney-bio"><p>Lucy Suky is the Principal Associate at Milton Advocates, bringing dedicated legal expertise and a thorough, client-focused approach to all matters she handles. She plays a central role in the day-to-day delivery of the firm&#8217;s legal services across multiple practice areas.</p><p>Lucy is committed to the firm&#8217;s values of integrity, professionalism and excellence, working closely with clients to understand their needs and provide legal guidance that is both practical and strategically sound.</p></div>
+        <div class="modal-header"><div><h2>Lucy Suky</h2><div class="attorney-role">Partner</div></div></div>
+        <div class="attorney-bio"><p>Lucy Suky is a Partner at Milton Advocates, bringing rigorous legal expertise and strategic leadership to the firm&rsquo;s practice. She plays a central and senior role in the delivery of the firm&rsquo;s legal services across multiple practice areas, providing authoritative guidance to clients while driving the firm&rsquo;s growth.</p><p>Lucy is deeply committed to the firm&rsquo;s values of integrity, professionalism and excellence. She works closely with clients at the highest level, combining thorough legal analysis with practical, commercially sound advice — making her a trusted counsel for individuals, businesses and institutions alike.</p></div>
         <div class="attorney-cta"><a href="contact.html" class="btn btn-primary">Get in Touch</a></div>
       </div>
     </div>
@@ -907,7 +911,7 @@
       <button class="modal-close" onclick="closeModal('tm-isingoma')">&#x2715;</button>
       <div class="modal-image attorney-portrait team-attorney-img">
         <img src="assets/images/attorney-isingoma.jpg" alt="Isingoma Derrick"
-             style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;"
+             style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="modal-initials-fallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
           <span style="font-family:'Playfair Display',serif;font-size:72px;color:var(--cyan);font-weight:700;">ID</span>
@@ -927,7 +931,7 @@
       <button class="modal-close" onclick="closeModal('tm-brian')">&#x2715;</button>
       <div class="modal-image attorney-portrait team-attorney-img">
         <img src="assets/images/attorney-brian.jpg" alt="Brian Ssenabulya"
-             style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;"
+             style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="modal-initials-fallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
           <span style="font-family:'Playfair Display',serif;font-size:72px;color:var(--cyan);font-weight:700;">BS</span>
