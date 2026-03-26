@@ -2,31 +2,48 @@
    MILTON ADVOCATES — script.js  v5
    ============================================================ */
 
-/* === NAVBAR HIDE ON FOOTER — desktop only === */
+/* === NAVBAR + TOP-BAR HIDE ON FOOTER — desktop only, both slide away together === */
 (function () {
-  const navbar = document.getElementById('navbar');
-  const footer = document.getElementById('site-footer');
+  const navbar  = document.getElementById('navbar');
+  const topBar  = document.querySelector('.top-bar');
+  const footer  = document.getElementById('site-footer');
   if (!navbar || !footer) return;
 
   function isDesktop() { return window.innerWidth > 768; }
 
+  /* Position navbar directly below top-bar */
+  function setNavbarTop() {
+    if (!isDesktop()) {
+      navbar.style.top = '0px';
+      return;
+    }
+    const tbH = topBar ? topBar.offsetHeight : 0;
+    navbar.style.top = tbH + 'px';
+  }
+
   function checkFooter() {
     if (!isDesktop()) {
-      // Always show navbar on mobile — mobile nav is handled separately
       navbar.classList.remove('hide');
+      if (topBar) topBar.classList.remove('hide');
       return;
     }
     const footerTop = footer.getBoundingClientRect().top;
     const winH = window.innerHeight;
     if (footerTop < winH) {
       navbar.classList.add('hide');
+      if (topBar) topBar.classList.add('hide');
     } else {
       navbar.classList.remove('hide');
+      if (topBar) topBar.classList.remove('hide');
     }
   }
 
+  setNavbarTop();
   window.addEventListener('scroll', checkFooter, { passive: true });
-  window.addEventListener('resize', checkFooter, { passive: true });
+  window.addEventListener('resize', function() {
+    setNavbarTop();
+    checkFooter();
+  }, { passive: true });
   checkFooter();
 })();
 
@@ -328,10 +345,11 @@ function setActive(el) {
   sections.forEach(s => observer.observe(s));
 })();
 
-/* === LEGAL TABS — dock offset adjusts when navbar hides === */
+/* === LEGAL TABS — dock offset adjusts when header hides === */
 (function () {
   const tabsWrap = document.querySelector('.legal-tabs-wrap');
   const navbar   = document.getElementById('navbar');
+  const topBar   = document.querySelector('.top-bar');
   if (!tabsWrap || !navbar) return;
   function syncTabsTop() {
     if (window.innerWidth <= 768) {
@@ -341,13 +359,33 @@ function setActive(el) {
     if (navbar.classList.contains('hide')) {
       tabsWrap.style.top = '0px';
     } else {
-      tabsWrap.style.top = navbar.offsetHeight + 'px';
+      const tbH = topBar ? topBar.offsetHeight : 0;
+      tabsWrap.style.top = (tbH + navbar.offsetHeight) + 'px';
     }
   }
   window.addEventListener('scroll', syncTabsTop, { passive: true });
   window.addEventListener('resize', syncTabsTop, { passive: true });
   new MutationObserver(syncTabsTop).observe(navbar, { attributes: true, attributeFilter: ['class'] });
   syncTabsTop();
+})();
+
+/* === DYNAMIC BODY PADDING — accounts for fixed top-bar + navbar combined height === */
+(function () {
+  function updateBodyPadding() {
+    var topBar = document.querySelector('.top-bar');
+    var navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    var tbH = (topBar && window.innerWidth > 768) ? topBar.offsetHeight : 0;
+    var nbH = navbar.offsetHeight;
+    document.body.style.paddingTop = (tbH + nbH) + 'px';
+  }
+  // Run after DOM is ready and fonts/layout have settled
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(updateBodyPadding, 50); });
+  } else {
+    setTimeout(updateBodyPadding, 50);
+  }
+  window.addEventListener('resize', updateBodyPadding, { passive: true });
 })();
 
 /* === PAGE LOAD FADE-IN === */
