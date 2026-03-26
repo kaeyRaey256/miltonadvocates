@@ -64,17 +64,24 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 
 /* === NAVBAR === */
 .navbar {
-  position: sticky; top: 0; z-index: 1000; padding: 14px 0;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 14px 0;
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #0d2260 100%);
   box-shadow: 0 2px 20px rgba(0,0,77,0.4);
-  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1);
   isolation: isolate;
 }
-.navbar.hide { opacity: 0; transform: translateY(-100%); pointer-events: none; }
-/* Navbar hide only applies on desktop — mobile has its own nav system */
+.navbar.hide {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+/* Navbar hide only applies on desktop */
 @media (max-width: 768px) {
   .navbar.hide { opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
 }
+/* Compensate for fixed navbar — push page content down */
+body { padding-top: 90px; }
+@media (max-width: 768px) { body { padding-top: 72px; } }
 /* Navbar animated crosshatch pattern */
 .navbar::before {
   content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
@@ -462,7 +469,6 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .team-member-card:hover > div:first-child img {
   transform: scale(1.04);
 }
-.team-member-badge { position: absolute; top: 16px; right: 16px; background: var(--cyan); color: var(--navy); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; z-index: 2; }
 
 /* Expand bar */
 @keyframes lazyFloat {
@@ -1749,11 +1755,11 @@ h1, h2, h3, .team-card-name, .attorney-role {
 .legal-hero-sub { color: rgba(249,248,247,0.7); font-size: 15px; line-height: 1.7; max-width: 540px; }
 .legal-tabs-wrap {
   background: var(--offwhite); border-bottom: 1px solid rgba(0,0,128,0.08);
-  position: sticky; top: 88px; z-index: 100;
-  transition: top 0.45s var(--ease);
+  position: sticky; top: 90px; z-index: 100;
+  transition: top 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 @media (max-width: 768px) {
-  .legal-tabs-wrap { top: 0 !important; transition: none; }
+  .legal-tabs-wrap { top: 72px !important; transition: none; }
 }
 .legal-tabs { display: flex; gap: 0; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 .legal-tab {
