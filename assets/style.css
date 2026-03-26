@@ -71,6 +71,10 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
   isolation: isolate;
 }
 .navbar.hide { opacity: 0; transform: translateY(-100%); pointer-events: none; }
+/* Navbar hide only applies on desktop — mobile has its own nav system */
+@media (max-width: 768px) {
+  .navbar.hide { opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
+}
 /* Navbar animated crosshatch pattern */
 .navbar::before {
   content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
@@ -384,9 +388,17 @@ button { cursor: pointer; border: none; font-family: inherit; background: none; 
 .practice-list { display: none; position: relative; }
 .practice-card {
   background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 4px; padding: 36px 28px; cursor: pointer;
+  border-radius: 4px; padding: 36px 28px; cursor: pointer; position: relative;
   transition: background var(--t-slow) var(--ease), transform var(--t-slow) var(--ease), box-shadow var(--t-slow) var(--ease), border-color var(--t-slow) var(--ease);
 }
+.practice-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--cyan), rgba(0,231,255,0));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s var(--ease);
+  border-radius: 4px 4px 0 0;
+}
+.practice-card:hover::before { transform: scaleX(1); }
 .practice-card:hover {
   background: rgba(255,255,255,0.12); transform: translateY(-8px);
   border-color: rgba(0,231,255,0.25);
@@ -1738,9 +1750,10 @@ h1, h2, h3, .team-card-name, .attorney-role {
 .legal-tabs-wrap {
   background: var(--offwhite); border-bottom: 1px solid rgba(0,0,128,0.08);
   position: sticky; top: 88px; z-index: 100;
+  transition: top 0.45s var(--ease);
 }
 @media (max-width: 768px) {
-  .legal-tabs-wrap { top: 0; }
+  .legal-tabs-wrap { top: 0 !important; transition: none; }
 }
 .legal-tabs { display: flex; gap: 0; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 .legal-tab {
@@ -1814,4 +1827,35 @@ h1, h2, h3, .team-card-name, .attorney-role {
   .why-card:nth-child(3) { animation-delay: 2.5s; }
   .why-card:nth-child(4) { animation-delay: 3.5s; }
   .why-card:nth-child(5) { animation-delay: 4.5s; }
+}
+
+/* ============================================================
+   PREMIUM ADDITIONS
+   ============================================================ */
+
+/* Partner-level team card — elevated border + badge accent */
+.team-member-card.is-partner {
+  border-color: rgba(0,231,255,0.22);
+  box-shadow: 0 4px 20px rgba(0,0,77,0.08), 0 0 0 1px rgba(0,231,255,0.1);
+}
+.team-member-card.is-partner::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--cyan), rgba(0,231,255,0.2));
+  z-index: 3; border-radius: 4px 4px 0 0;
+}
+.team-member-card.is-partner:hover {
+  box-shadow: 0 24px 56px rgba(0,0,77,0.18), 0 0 0 1px rgba(0,231,255,0.35), 0 0 36px rgba(0,231,255,0.1);
+}
+
+/* Footer columns — scroll-reveal stagger */
+.footer-brand  { opacity: 0; transform: translateY(20px); animation: footerReveal 0.6s var(--ease) 0.1s forwards; }
+.footer-col:nth-child(2) { opacity: 0; transform: translateY(20px); animation: footerReveal 0.6s var(--ease) 0.2s forwards; }
+.footer-col:nth-child(3) { opacity: 0; transform: translateY(20px); animation: footerReveal 0.6s var(--ease) 0.3s forwards; }
+.footer-col:nth-child(4) { opacity: 0; transform: translateY(20px); animation: footerReveal 0.6s var(--ease) 0.4s forwards; }
+@keyframes footerReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Only animate if user has scrolled footer into view — fallback: just show */
+@media (prefers-reduced-motion: reduce) {
+  .footer-brand, .footer-col { opacity: 1 !important; transform: none !important; animation: none !important; }
 }
